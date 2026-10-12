@@ -1,0 +1,76 @@
+/* Final visual pass: identity, actions and outcomes have separate color roles. */
+.workbench .queue-panel { background:var(--surface); }
+.workbench .settings-panel { background:var(--panel); }
+.workbench .result-column { background:var(--elevated); }
+.workbench .panel-title { background:var(--panel); }
+.workbench .preview-toolbar { background:var(--soft); }
+.workbench .preview-panel { background:var(--surface); }
+
+.workbench .queue-row::before {
+  content:''; position:absolute; left:0; top:17px; width:2px; height:25px;
+  border-radius:2px; background:var(--category-line); pointer-events:none;
+}
+.workbench .queue-row:hover { background:var(--soft); }
+.workbench .queue-row.selected {
+  background:var(--soft); box-shadow:none;
+  outline:1px solid var(--category-line); outline-offset:-1px;
+}
+.workbench .queue-row.selected::before {
+  top:8px; bottom:8px; height:auto; width:3px; background:var(--category);
+}
+.workbench .queue-file-icon { border:1px solid var(--category-line); }
+.workbench .queue-type-label, .workbench .file-type-label {
+  display:inline-block; color:var(--category); background:var(--category-soft);
+  border-radius:4px; padding:1px 5px; font-weight:600;
+}
+.workbench .queue-row:not(:has(.queue-type-label)) .queue-file-icon {
+  color:var(--muted); background:var(--soft); border-color:var(--line);
+}
+.workbench .queue-row:not(:has(.queue-type-label))::before { background:var(--line); }
+
+.workbench .status { padding:1px 6px; border-radius:4px; }
+.workbench .status-ready, .workbench .status-validating,
+.workbench .status-queued, .workbench .status-cancelled { color:var(--muted); }
+.workbench .status-completed { color:var(--success); background:var(--success-soft); }
+.workbench .status-warning { color:var(--warning); background:var(--warning-soft); }
+.workbench .status-failed { color:var(--error); background:var(--error-soft); }
+.workbench .status-processing { color:var(--processing); background:var(--processing-soft); }
+.workbench .queue-row progress, .workbench .progress-area progress { accent-color:var(--processing); }
+.workbench .progress-area p { color:var(--processing); }
+
+.workbench .has-warning .success-header { color:var(--warning); }
+.workbench .has-warning .success-icon { color:var(--warning); background:var(--warning-soft); }
+.workbench .result-column[data-state=failed] .empty-output>svg,
+.workbench .result-column[data-state=failed] .empty-output h2 { color:var(--error); }
+.workbench .result-column[data-state=processing] .empty-output>svg { color:var(--processing); }
+
+.workbench .download-button { background:var(--button); box-shadow:none; }
+.workbench .download-button:hover { background:var(--button-hover); }
+.workbench .queue-cleanup .text-button, .workbench .settings-bottom .text-button,
+.workbench .preview-toggle { color:var(--muted); }
+.workbench .queue-cleanup .text-button:hover, .workbench .settings-bottom .text-button:hover,
+.workbench .preview-toggle:hover { color:var(--text); }
+.workbench .tool-switch button[aria-pressed=true] {
+  color:var(--category); background:var(--category-soft);
+  box-shadow:inset 0 0 0 1px var(--category-line);
+}
+.workbench .quality input { accent-color:var(--category); }
+.workbench .checkbox-label input { accent-color:var(--category); }
+
+.workbench .result-format-label {
+  display:inline-block; width:fit-content; padding:2px 7px; border-radius:4px;
+}
+.workbench .result-format-label[data-format=pdf],
+.workbench .result-format-label[data-format=docx],
+.workbench .result-format-label[data-format=txt] { color:var(--document); background:var(--document-soft); }
+.workbench .result-format-label[data-format=png],
+.workbench .result-format-label[data-format=jpeg],
+.workbench .result-format-label[data-format=webp] { color:var(--image); background:var(--image-soft); }
+.workbench .result-format-label[data-format=csv],
+.workbench .result-format-label[data-format=json] { color:var(--data); background:var(--data-soft); }
+.workbench .result-format-label[data-format=md],
+.workbench .result-format-label[data-format=html] { color:var(--markup); background:var(--markup-soft); }
+
+/* Focus identifies the control, not its file category or conversion outcome. */
+.workbench button:focus-visible, .workbench input:focus-visible,
+.workbench select:focus-visible { outline-color:var(--focus); }

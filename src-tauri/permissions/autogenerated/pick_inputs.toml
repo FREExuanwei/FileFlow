@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-pick-inputs"
+description = "Enables the pick_inputs command without any pre-configured scope."
+commands.allow = ["pick_inputs"]
+
+[[permission]]
+identifier = "deny-pick-inputs"
+description = "Denies the pick_inputs command without any pre-configured scope."
+commands.deny = ["pick_inputs"]

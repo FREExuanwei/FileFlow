@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-ocr-finish"
+description = "Enables the ocr_finish command without any pre-configured scope."
+commands.allow = ["ocr_finish"]
+
+[[permission]]
+identifier = "deny-ocr-finish"
+description = "Denies the ocr_finish command without any pre-configured scope."
+commands.deny = ["ocr_finish"]

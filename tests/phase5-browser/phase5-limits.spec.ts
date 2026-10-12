@@ -1,0 +1,2 @@
+import {test,expect,openEnglish,importTool,runTool,workers} from './phase5-production-harness';
+test('375px rejects new-operation input beyond half cap before starting a Worker',async({page})=>{await page.setViewportSize({width:375,height:812});await openEnglish(page);await importTool(page,'hash','fiction-limit.bin',Buffer.alloc(16*1024**2+1,65));await runTool(page);await expect(page.locator('.queue-row')).toHaveAttribute('data-status','failed');await expect(page.locator('.settings-panel [role=alert]')).toBeVisible();expect((await workers(page)).created).toBe(0);});

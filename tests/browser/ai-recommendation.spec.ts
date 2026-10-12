@@ -1,0 +1,9 @@
+import {test,expect,enterAi} from './ai-harness';
+import {readFileSync} from 'node:fs';
+for(const language of ['zh-CN','en'])for(const theme of ['light','dark'])test(`${language} ${theme}: clean medium PDF needs no preprocessing and advanced settings stay optional`,async({page})=>{
+  await page.addInitScript(({language,theme})=>{localStorage.setItem('fileflow.language',language);localStorage.setItem('fileflow-theme',theme);},{language,theme});await enterAi(page);
+  await page.locator('input[type=file]').setInputFiles('tests/fixtures/ai-clean-medium.pdf');await expect(page.locator('.ai-process')).toBeEnabled();await expect(page.locator('.ai-advanced')).not.toHaveAttribute('open');await expect(page.locator('#ai-preset')).not.toBeVisible();await expect(page.locator('#ai-strategy')).toHaveValue('auto');await page.locator('.ai-process').click();
+  await expect(page.locator('.ai-recommendation')).toHaveAttribute('data-recommendation','none');await expect(page.locator('.ai-recommendation')).toContainText(language==='en'?'already fairly clean':'文档已经比较干净');await expect(page.locator('.ai-recommendation')).toContainText(language==='en'?'does not need AI preprocessing':'无需 AI 预处理');await expect(page.locator('.ai-chunks')).toHaveCount(0);
+  const wait=page.waitForEvent('download');await page.locator('.ai-recommended-action').click();expect(readFileSync((await(await wait).path())!,'utf8')).toContain('Fictional page 8');
+  await page.locator('.ai-advanced>summary').click();await expect(page.locator('.ai-options input')).toHaveCount(7);await page.locator('#ai-strategy').selectOption('tokens');await page.locator('#ai-target').selectOption('4000');await page.locator('.ai-process').click();await expect(page.locator('.ai-chunks')).toBeVisible();await expect.poll(()=>page.locator('.ai-chunk').count()).toBeGreaterThan(1);
+});

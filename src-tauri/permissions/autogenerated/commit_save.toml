@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-commit-save"
+description = "Enables the commit_save command without any pre-configured scope."
+commands.allow = ["commit_save"]
+
+[[permission]]
+identifier = "deny-commit-save"
+description = "Denies the commit_save command without any pre-configured scope."
+commands.deny = ["commit_save"]

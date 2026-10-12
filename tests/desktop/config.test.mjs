@@ -1,0 +1,8 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const read=p=>readFileSync(p,'utf8'),json=p=>JSON.parse(read(p));
+test('desktop has a separate bundled entry and no implicit window',()=>{const c=json('src-tauri/tauri.conf.json');assert.equal(c.build.frontendDist,'../dist-desktop');assert.deepEqual(c.app.windows,[]);assert.equal(c.app.withGlobalTauri,false);assert.match(read('desktop.html'),/src\/desktop\/main.tsx/);});
+test('NSIS is per-user and does not download a runtime',()=>{const c=json('src-tauri/tauri.conf.json');assert.deepEqual(c.bundle.targets,['nsis']);assert.equal(c.bundle.windows.webviewInstallMode.type,'skip');assert.equal(c.bundle.windows.nsis.installMode,'currentUser');});
+test('CSP confines active content and IPC to local origins',()=>{const c=json('src-tauri/tauri.conf.json');const p=c.app.security.csp;assert.match(p,/object-src 'none'/);assert.match(p,/form-action 'none'/);assert.ok(!/https:\/\/(?!ipc\.localhost)|\*|unsafe-eval/.test(p));assert.match(p,/ipc: http:\/\/ipc.localhost/);});
+test('capability exposes only scoped file workflow, approved bounded OCR commands and two preferences, not plugins or remote access',()=>{const c=json('src-tauri/capabilities/main.json');assert.deepEqual(c.windows,['main']);assert.equal(c.remote,undefined);assert.ok(c.permissions.every(p=>/^allow-(pick-inputs|read-input|release-input|choose-save|write-save|commit-save|abort-save|privacy-status|get-preferences|set-preferences|ocr-info|ocr-begin|ocr-pixels|ocr-cancel|ocr-finish)$/.test(p)||['core:event:allow-listen','core:event:allow-unlisten'].includes(p)));assert.match(read('src-tauri/build.rs'),/app_manifest/);});

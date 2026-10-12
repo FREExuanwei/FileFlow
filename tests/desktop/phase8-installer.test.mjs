@@ -1,0 +1,11 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const config=JSON.parse(readFileSync('src-tauri/tauri.conf.json','utf8'));
+test('installer admits an offline runtime only after the FileFlow preflight hook',()=>{assert.equal(config.bundle.windows.webviewInstallMode.type,'skip');assert.equal(config.bundle.windows.minimumWebview2Version,undefined);assert.equal(config.bundle.windows.nsis.installerHooks,'windows/installer-hooks.nsh');});
+test('the first-party project does not claim an unapproved open-source license',()=>{assert.doesNotMatch(readFileSync('src-tauri/Cargo.toml','utf8'),/^license\s*=\s*"/m);const p=JSON.parse(readFileSync('package.json','utf8'));assert.equal(p.private,true);assert.equal(p.license,undefined);});
+test('running-process checks are observation-only, including the upstream call sites',()=>{const hook=readFileSync('src-tauri/windows/installer-hooks.nsh','utf8');assert.match(hook,/!macroundef CheckIfAppIsRunning/);assert.match(hook,/RmGetList/);assert.doesNotMatch(hook,/RmShutdown|TerminateProcess|taskkill|Exec(?:Wait)?\s/);assert.match(hook,/RestartManager_EndSession/);assert.match(hook,/SetErrorLevel 32/);});
+test('runtime checks are bilingual and never change the runtime or app data',()=>{const hook=readFileSync('src-tauri/windows/installer-hooks.nsh','utf8');assert.match(hook,/VersionCompare/);assert.match(hook,/154\.0\.0\.0/);assert.match(hook,/SetErrorLevel 2/);assert.match(hook,/WebView2/);assert.match(hook,/请/);assert.doesNotMatch(hook,/NSISdl|download|WriteReg|RMDir|Delete\s/i);});
+test('GUI preflight runs before maintenance can call an old uninstaller and preserves registers',()=>{const hook=readFileSync('src-tauri/windows/installer-hooks.nsh','utf8');assert.match(hook,/!define MUI_CUSTOMFUNCTION_GUIINIT FileFlowPreflight/);assert.match(hook,/Function FileFlowPreflight/);assert.match(hook,/Push \$R0/);assert.match(hook,/Pop \$R0/);assert.match(hook,/Quit/);});
+
+test('maintenance rechecks runtime and running tasks immediately before old uninstall',()=>{assert.equal(config.bundle.windows.nsis.template,'windows/installer.nsi');const template=readFileSync('src-tauri/windows/installer.nsi','utf8');assert.match(template,/reinst_uninstall:\s*Call FileFlowPreflight\s*HideWindow/);});

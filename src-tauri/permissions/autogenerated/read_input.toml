@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-read-input"
+description = "Enables the read_input command without any pre-configured scope."
+commands.allow = ["read_input"]
+
+[[permission]]
+identifier = "deny-read-input"
+description = "Denies the read_input command without any pre-configured scope."
+commands.deny = ["read_input"]

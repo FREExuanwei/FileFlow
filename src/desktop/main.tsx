@@ -1,0 +1,14 @@
+import {StrictMode} from 'react';
+import {createRoot} from 'react-dom/client';
+import App from '../app/App';
+import {LanguageProvider} from '../i18n/Provider';
+import {initializeDesktop} from './service';
+import {DesktopStatus} from './Status';
+import '../styles/app.css';
+import '../styles/dialog.css';
+import '../styles/workspace.css';
+import '../styles/colors.css';
+import '../styles/ai-ready.css';
+import './desktop.css';
+import '../styles/phase7.css';
+initializeDesktop().then(()=>createRoot(document.getElementById('root')!).render(<StrictMode><LanguageProvider><App/><DesktopStatus/></LanguageProvider></StrictMode>)).catch(()=>{document.getElementById('root')!.textContent='FileFlow desktop initialization failed. 文件授权或隐私配置无法初始化，请关闭并重试。';});

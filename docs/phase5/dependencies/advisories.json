@@ -1,0 +1,77 @@
+[
+  {
+    "package": "yaml",
+    "id": "GHSA-48c2-rrv3-qjmp",
+    "severity": "MODERATE",
+    "actualVendoredVersion": "2.9.1",
+    "affectedRange": "[[{\"type\":\"SEMVER\",\"events\":[{\"introduced\":\"2.0.0\"},{\"fixed\":\"2.8.3\"}]}],[{\"type\":\"SEMVER\",\"events\":[{\"introduced\":\"1.0.0\"},{\"fixed\":\"1.10.3\"}]}]]",
+    "scannerClaimedRange": "[[{\"type\":\"SEMVER\",\"events\":[{\"introduced\":\"2.0.0\"},{\"fixed\":\"2.8.3\"}]}],[{\"type\":\"SEMVER\",\"events\":[{\"introduced\":\"1.0.0\"},{\"fixed\":\"1.10.3\"}]}]]",
+    "officialSheetjsRange": "Not applicable: yaml candidate",
+    "reachableApi": "parseDocument; bounded Worker parsing in Task6",
+    "disposition": "Not applicable with evidence",
+    "evidence": [
+      "Official OSV/npm affected range ends at fixed 2.8.3; authentic archive is 2.9.1.",
+      "Official v2.9.1 package/tag metadata and LICENSE match acquired members; registry SHA512 and pinned SHA256 verified.",
+      "Acquired package/browser/dist/compose/compose-node.js retains RESOURCE_EXHAUSTION catch matching fixed tagged source."
+    ],
+    "source": "https://api.osv.dev/v1/vulns/GHSA-48c2-rrv3-qjmp",
+    "checkedAt": "2026-10-07T15:35:13.366Z",
+    "rawResponse": "raw/yaml-GHSA-48c2-rrv3-qjmp.json"
+  },
+  {
+    "package": "yaml",
+    "id": "GHSA-f9xv-q969-pqx4",
+    "severity": "HIGH",
+    "actualVendoredVersion": "2.9.1",
+    "affectedRange": "[[{\"type\":\"SEMVER\",\"events\":[{\"introduced\":\"2.0.0-5\"},{\"fixed\":\"2.2.2\"}]}]]",
+    "scannerClaimedRange": "[[{\"type\":\"SEMVER\",\"events\":[{\"introduced\":\"2.0.0-5\"},{\"fixed\":\"2.2.2\"}]}]]",
+    "officialSheetjsRange": "Not applicable: yaml candidate",
+    "reachableApi": "parseDocument; bounded Worker parsing in Task6",
+    "disposition": "Not applicable with evidence",
+    "evidence": [
+      "Official OSV/npm affected range ends at fixed 2.2.2; authentic archive is 2.9.1.",
+      "Official v2.9.1 package/tag metadata and LICENSE match acquired members; registry SHA512 and pinned SHA256 verified."
+    ],
+    "source": "https://api.osv.dev/v1/vulns/GHSA-f9xv-q969-pqx4",
+    "checkedAt": "2026-10-07T15:35:13.366Z",
+    "rawResponse": "raw/yaml-GHSA-f9xv-q969-pqx4.json"
+  },
+  {
+    "package": "xlsx",
+    "id": "GHSA-4r6h-8v6p-xvw6",
+    "severity": "HIGH",
+    "affectedRange": "[[{\"type\":\"SEMVER\",\"events\":[{\"introduced\":\"0\"}]}]]",
+    "scannerClaimedRange": "[[{\"type\":\"SEMVER\",\"events\":[{\"introduced\":\"0\"}]}]]",
+    "officialSheetjsRange": "<=0.19.2; fixed0.19.3",
+    "actualVendoredVersion": "0.20.3",
+    "reachableApi": "XLSX.read; carried comments/XML implementations reviewed regardless of FileFlow route reachability",
+    "source": "https://api.osv.dev/v1/vulns/GHSA-4r6h-8v6p-xvw6",
+    "checkedAt": "2026-10-08T04:19:28.872Z",
+    "rawResponse": "raw/xlsx-GHSA-4r6h-8v6p-xvw6.json",
+    "disposition": "Not applicable with evidence",
+    "evidence": [
+      "Fresh OSV/npm ecosystem uses open-ended introduced0 because fixed CDN releases are not published to npm; last_known_affected_version_range and official advisory specify fixed version. Scanner finding retained, not blanket ignored.",
+      "Actual ESM retains the negative row/column comment-address guard also present in official0.19.3. Isolated actual read of crafted OOXML comments checks three special references with positive control and unchanged Object.prototype.",
+      "Actual archive/source and regression report hashes bound in fixVerifications and docs/phase5/validation/task-09/security-regression.json."
+    ]
+  },
+  {
+    "package": "xlsx",
+    "id": "GHSA-5pgg-2g8v-p4x9",
+    "severity": "HIGH",
+    "affectedRange": "[[{\"type\":\"SEMVER\",\"events\":[{\"introduced\":\"0\"}]}]]",
+    "scannerClaimedRange": "[[{\"type\":\"SEMVER\",\"events\":[{\"introduced\":\"0\"}]}]]",
+    "officialSheetjsRange": "<=0.20.1; fixed0.20.2",
+    "actualVendoredVersion": "0.20.3",
+    "reachableApi": "XLSX.read; carried comments/XML implementations reviewed regardless of FileFlow route reachability",
+    "source": "https://api.osv.dev/v1/vulns/GHSA-5pgg-2g8v-p4x9",
+    "checkedAt": "2026-10-08T04:19:28.872Z",
+    "rawResponse": "raw/xlsx-GHSA-5pgg-2g8v-p4x9.json",
+    "disposition": "Not applicable with evidence",
+    "evidence": [
+      "Fresh OSV/npm ecosystem uses open-ended introduced0 because fixed CDN releases are not published to npm; last_known_affected_version_range and official advisory specify fixed version. Scanner finding retained, not blanket ignored.",
+      "Actual ESM matches16 fixed0.20.2 regex lines and replaces prior unsafe XML matching helpers. Bounded malformed XML actual parser checks1/4/16KiB inputs complete within10s/128MiB isolated Worker.",
+      "Actual archive/source and regression report hashes bound in fixVerifications and docs/phase5/validation/task-09/security-regression.json."
+    ]
+  }
+]

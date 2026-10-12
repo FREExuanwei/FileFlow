@@ -1,0 +1,41 @@
+:root {
+  color-scheme:light;
+  --bg:#f2f4f7; --surface:#fdfefe; --panel:#f9fafc; --elevated:#fff; --soft:#eaf0f5;
+  --text:#25303c; --muted:#596777; --line:#dbe2e9; --control-line:#8897a6;
+  --primary:#5d4cbe; --button:#6251cd; --button-hover:#5140b6; --focus:#6552ce;
+  --accent-soft:#eeeafb; --accent-line:#d7cff2; --drop-border:#9d95c3; --drop-bg:#fff;
+  --document:#65589e; --document-soft:#f0eef8; --document-line:#d4cde6;
+  --image:#236f86; --image-soft:#edf6f9; --image-line:#bfdbe3;
+  --data:#267565; --data-soft:#edf6f1; --data-line:#c2ddd2;
+  --markup:#a34f7a; --markup-soft:#f8eef3; --markup-line:#e5cbd8;
+  --success:#26724f; --success-soft:#edf6f0;
+  --warning:#855b1d; --warning-soft:#faf2e2; --warning-line:#c5a16b;
+  --error:#b14255; --error-soft:#faeef1; --error-line:#dbaab6;
+  --info:#246c86; --info-soft:#edf5fa;
+  --processing:#4365a0; --processing-soft:#edf2fb;
+  --shadow:0 14px 45px #25334a08,0 2px 5px #25334a04;
+  --glow-brand:#7665cd12; --glow-cyan:#529bb810; --grid:#62768b10;
+  --motion:160ms; --ease:cubic-bezier(.2,.8,.2,1);
+}
+:root[data-theme=dark] {
+  color-scheme:dark;
+  --bg:#14191f; --surface:#1b222a; --panel:#212a34; --elevated:#293440; --soft:#25303b;
+  --text:#e6edf3; --muted:#afbcc7; --line:#36424f; --control-line:#778797;
+  --primary:#b4a9f2; --button:#6756ce; --button-hover:#7564db; --focus:#c1b6ff;
+  --accent-soft:#2b2b43; --accent-line:#454367; --drop-border:#747599; --drop-bg:#1a232e;
+  --document:#beb3e9; --document-soft:#2b2a3a; --document-line:#514966;
+  --image:#8fcbd8; --image-soft:#23333b; --image-line:#395866;
+  --data:#94cbb8; --data-soft:#25362f; --data-line:#405e50;
+  --markup:#d8a5c0; --markup-soft:#382a33; --markup-line:#674656;
+  --success:#a0d0ae; --success-soft:#26372d;
+  --warning:#dfbf89; --warning-soft:#3a3124; --warning-line:#9b7d49;
+  --error:#e6a6b3; --error-soft:#3d2931; --error-line:#875465;
+  --info:#95c7dd; --info-soft:#26343e;
+  --processing:#a2baf0; --processing-soft:#283244;
+  --shadow:0 16px 48px #00000020,0 2px 6px #00000010;
+  --glow-brand:#8773cc10; --glow-cyan:#458ca410; --grid:#a3b3c00b;
+}
+.document { --category:var(--document); --category-soft:var(--document-soft); --category-line:var(--document-line); }
+.image { --category:var(--image); --category-soft:var(--image-soft); --category-line:var(--image-line); }
+.data { --category:var(--data); --category-soft:var(--data-soft); --category-line:var(--data-line); }
+.markup { --category:var(--markup); --category-soft:var(--markup-soft); --category-line:var(--markup-line); }

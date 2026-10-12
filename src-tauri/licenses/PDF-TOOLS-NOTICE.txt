@@ -1,0 +1,44 @@
+pdf-lib 1.17.1 — MIT
+Source: https://registry.npmjs.org/pdf-lib/-/pdf-lib-1.17.1.tgz
+SHA256: a7cc1eaf12e41e612a7be581162a63b18118aefc01e90f6a1f35347b1f324a1c
+Full licenses retained in licenses/. No upstream source modifications.
+
+@pdf-lib/standard-fonts 1.0.0 — MIT
+Source: https://registry.npmjs.org/@pdf-lib/standard-fonts/-/standard-fonts-1.0.0.tgz
+SHA256: 8a6b3a914d6d928840b484aa247d12702fc7b5ef00130a914929a129a5423d36
+Full licenses retained in licenses/. No upstream source modifications.
+
+@pdf-lib/upng 1.0.1 — MIT
+Source: https://registry.npmjs.org/@pdf-lib/upng/-/upng-1.0.1.tgz
+SHA256: 737ffe924e0e207173427b7fe30a610144c93b27a1c894ac006b6ff70fc84f6c
+Full licenses retained in licenses/. No upstream source modifications.
+
+pako 1.0.11 — (MIT AND Zlib)
+Source: https://registry.npmjs.org/pako/-/pako-1.0.11.tgz
+SHA256: 0d4028dc0352a740c30cbfd772917f2744986d42bfa0b06ec7642bffe7ad3941
+Full licenses retained in licenses/. No upstream source modifications.
+
+tslib 1.14.1 — 0BSD
+Source: https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz
+SHA256: 733b312e29ef6488eb668db728bcd0dee92f087872001a06c8594999c06d91fb
+Full licenses retained in licenses/. No upstream source modifications.
+
+Zlib component attribution (pako 1.0.11):
+(C) 1995-2013 Jean-loup Gailly and Mark Adler
+(C) 2014-2017 Vitaly Puzrin and Andrey Tupitsin
+
+This software is provided 'as-is', without any express or implied
+warranty. In no event will the authors be held liable for any damages
+arising from the use of this software.
+
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must not
+  claim that you wrote the original software. If you use this software
+  in a product, an acknowledgment in the product documentation would be
+  appreciated but is not required.
+2. Altered source versions must be plainly marked as such, and must not be
+  misrepresented as being the original software.
+3. This notice may not be removed or altered from any source distribution.

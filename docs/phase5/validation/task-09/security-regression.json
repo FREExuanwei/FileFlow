@@ -1,0 +1,49 @@
+{
+  "decision": "PASS",
+  "archiveSha256": "8dc73fc3b00203e72d176e85b50938627c7b086e607c682e8d3c22c02bb99fe8",
+  "sourceSha256": "1a0fb062ee9781b13f6687371b202aaefc53b6ce55b530c027e01f9c087b77db",
+  "fixedRegexLines": [
+    "closeparen",
+    "attregexg",
+    "tagregex1",
+    "xlmlregex",
+    "vtvregex",
+    "custregex",
+    "sitregex",
+    "mergecregex",
+    "hlinkregex",
+    "colregex",
+    "afregex",
+    "marginregex",
+    "sheetprregex",
+    "sviewregex",
+    "attregexg2",
+    "attregex2"
+  ],
+  "prototypeGuard": true,
+  "isolated": true,
+  "timeoutMs": 10000,
+  "memoryLimitMb": 128,
+  "elapsedMs": 84,
+  "pass": true,
+  "prototypePositiveControl": true,
+  "prototypeRefs": [
+    "__proto__",
+    "constructor",
+    "prototype"
+  ],
+  "redOsMalformedXml": [
+    {
+      "inputBytes": 1242,
+      "elapsedMs": 1
+    },
+    {
+      "inputBytes": 4314,
+      "elapsedMs": 0
+    },
+    {
+      "inputBytes": 16602,
+      "elapsedMs": 0
+    }
+  ]
+}

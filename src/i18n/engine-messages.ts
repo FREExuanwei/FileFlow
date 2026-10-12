@@ -1,0 +1,107 @@
+import type { Language } from './types';
+import { translate } from './index';
+
+// Presentation adapter: converter outputs and safety decisions remain unchanged.
+export const engineMessages: Record<string, string> = {
+  pdf_cancelled:'PDF 操作已取消，已有结果仍保留。',pdf_invalid:'PDF 格式无效、损坏或无法处理。',pdf_encrypted:'暂不支持加密 PDF。',pdf_file_limit:'单个 PDF 工具输入不得超过 40 MiB。',pdf_total_limit:'PDF 工具输入总计不得超过 60 MiB。',pdf_page_limit:'PDF 工具总页数不得超过 500 页。',pdf_page_invalid:'PDF 页面尺寸或旋转信息异常。',pdf_selection:'请检查 PDF 页码范围与操作要求。',pdf_empty:'PDF 必须至少保留一页。',pdf_output_limit:'最多生成 50 份 PDF。',pdf_result_limit:'PDF 结果总计不得超过 64 MiB。',pdf_timeout:'PDF 操作超时，已停止。',pdf_busy:'请等待当前 PDF 操作结束或先取消。',
+  'resource-limit': '会话共享容量已满，请清理部分文件后重试。',
+  'Choose a source with the same format as this task.': '请选择与当前任务格式相同的源文件。',
+  'Choose a valid file name without paths, reserved names or special characters (maximum 120 characters).': '请填写有效文件名，不含路径、保留名称或特殊字符，最多 120 个字符。',
+  'Image quality must be between 10% and 100%.': '图片质量必须在 10% 到 100% 之间。',
+  'Queue limit reached: 50 files or 200 MB of source files. Remove files before adding more.': '队列已达到 50 个文件或源文件总计 200 MB 的上限，请先移除部分文件。',
+  'Result memory limit reached (128 MB). Download and clear completed files, then retry.': '结果内存已达到 128 MB 上限。请下载并清除已完成的文件，再重试。',
+  'Extract readable content from a text-based PDF.': '从含有文字的 PDF 中提取可读内容。',
+  'Text-based PDFs only. Scanned pages need OCR, planned for later.': '仅支持可提取文字的 PDF。扫描页需要 OCR，当前版本暂不支持。',
+  'Content extraction: layout, tables, reading order and formulas may change. Maximum 500 pages.': '提取内容时，排版、表格、阅读顺序和公式可能变化。最多 500 页。',
+  'Turn Word documents into clean, readable content.': '将 Word 文档转换为清晰、易编辑的内容。',
+  'Semantic text, headings, lists and simple tables. Complex layout, images, equations and merged tables are not preserved.': '支持正文、标题、列表和简单表格。复杂排版、图片、公式和合并单元格不会保留。',
+  'Up to 10 MB; expanded ZIP limited to 80 MB.': '文件最大 10 MB，ZIP 解压后的内容上限为 80 MB。',
+  'Render Markdown as safe, semantic HTML.': '将 Markdown 转换为安全、结构清晰的 HTML。',
+  'Raw HTML is escaped. Images and active content are removed for privacy.': '原始 HTML 会转义显示。为保护隐私，图片和可执行内容会移除。',
+  'Convert semantic HTML into clean Markdown.': '将结构化 HTML 转换为简洁的 Markdown。',
+  'Scripts, styles, embeds and images are removed. Merged tables become readable text.': '脚本、样式、嵌入内容和图片会移除。含合并单元格的表格会转为可读文本。',
+  'Convert comma-separated rows into JSON objects.': '将逗号分隔的数据行转换为 JSON 对象。',
+  'UTF-8 comma-separated CSV with unique headers. Values remain strings. Up to 100,000 rows.': '支持 UTF-8 编码、逗号分隔且列名唯一的 CSV。值保留为字符串，最多 100,000 行。',
+  'Export a JSON array as a spreadsheet-friendly CSV.': '将 JSON 数组导出为适合电子表格使用的 CSV。',
+  'Arrays of flat objects only. Up to 100,000 rows and 1,000 columns. Missing and null values become empty cells.': '仅支持扁平对象数组，最多 100,000 行、1,000 列。缺失值和 null 会转为空单元格。',
+  'Spreadsheet formula strings (including headers) receive a protective apostrophe.': '可能被识别为电子表格公式的字符串（包括列名）会添加保护性单引号。',
+  'Re-encode images locally using your browser.': '使用浏览器在本地重新编码图片。',
+  'Original dimensions retained; maximum 24 megapixels. Metadata is discarded.': '保留原始尺寸，最多 2,400 万像素。图片元数据会移除。',
+  'JPEG replaces transparency with white. Animated images export their first frame.': 'JPEG 会用白色替代透明区域。动画图片仅导出第一帧。',
+  'This file is empty. Choose a file with content.': '这个文件是空的，请选择含有内容的文件。',
+  'Unsupported file type. Choose PDF, DOCX, Markdown, HTML, CSV, JSON, PNG, JPEG or WebP.': '暂不支持这个文件类型。请选择 PDF、DOCX、Markdown、HTML、CSV、JSON、PNG、JPEG 或 WebP。',
+  'The file MIME type does not match its filename. Please check the original file format.': '文件声明的类型与扩展名不一致，请检查原始文件格式。',
+  'The file signature does not match its format, or the file is damaged.': '文件内容与声明的格式不一致，或文件已经损坏。',
+  'PDF exceeds the 500-page browser safety limit.': '这个 PDF 超过 500 页的浏览器安全上限，请使用页数更少的文件。',
+  'This PDF appears to contain scanned pages or images. OCR support is planned for a later FileFlow version.': '这个 PDF 可能主要由扫描图片组成。当前版本暂不支持 OCR 文字识别。',
+  'Unable to read this PDF. It may be damaged or password protected.': '无法读取这个 PDF，它可能已损坏或受密码保护。',
+  'Image dimensions exceed the browser safety limit (24 megapixels, 16,384 pixels per side).': '图片尺寸超过浏览器安全上限：总计 2,400 万像素，单边最多 16,384 像素。',
+  'Unable to read image dimensions. The image may be damaged.': '无法读取图片尺寸，图片可能已经损坏。',
+  'Unable to read image dimensions. The image may be damaged or unsupported.': '无法读取图片尺寸，图片可能损坏或格式不受支持。',
+  'Unable to decode this image. It may be damaged or unsupported by your browser.': '无法解码这张图片，它可能已损坏，或当前浏览器不支持其格式。',
+  'Your browser could not allocate an image canvas. Try a smaller image.': '浏览器没有足够的资源处理这张图片，请尝试更小的图片。',
+  'Image encoding failed. Try a smaller image.': '图片编码失败，请尝试更小的图片。',
+  'This file is not valid UTF-8. Save it as UTF-8 and try again.': '这个文件不是有效的 UTF-8 编码。请另存为 UTF-8 后重试。',
+  'This file is empty or contains only whitespace.': '这个文件为空，或只包含空白字符。',
+  'No readable content remains after safe conversion.': '安全转换后没有可读内容，请检查原始文件。',
+  'Invalid DOCX archive.': 'DOCX 文件包无效，文件可能已经损坏。',
+  'Multipart DOCX archives are unsupported.': '暂不支持分卷存储的 DOCX 文件包。',
+  'DOCX has too many ZIP entries (limit: 2,000).': 'DOCX 文件包中的条目过多，安全上限为 2,000 个。',
+  'Invalid DOCX directory bounds.': 'DOCX 文件包的目录边界无效，请检查文件是否损坏。',
+  'Invalid DOCX directory or entry count.': 'DOCX 文件包的目录或条目数量无效。',
+  'Encrypted DOCX files are unsupported.': '暂不支持加密的 DOCX 文件。',
+  'Unsupported DOCX compression.': '暂不支持这个 DOCX 文件使用的压缩方式。',
+  'Invalid or unsupported ZIP64 DOCX.': 'DOCX 文件包无效，或使用了暂不支持的 ZIP64 格式。',
+  'DOCX expansion exceeds browser memory safety limits.': 'DOCX 解压后的内容超过浏览器内存安全上限，请使用更小的文档。',
+  'DOCX contains an unsafe archive path.': 'DOCX 文件包包含不安全或重复的路径，已停止处理。',
+  'Invalid DOCX local header.': 'DOCX 文件包的内部标头无效。',
+  'Invalid DOCX local filename or offset.': 'DOCX 文件包的内部文件名或位置无效。',
+  'Invalid DOCX ZIP size declarations.': 'DOCX 文件包声明的大小与实际结构不一致。',
+  'Invalid DOCX directory entry count.': 'DOCX 文件包的目录条目数量不一致。',
+  'DOCX has overlapping ZIP entries.': 'DOCX 文件包存在重叠条目，已停止处理。',
+  'DOCX is missing its document content.': 'DOCX 文件包缺少文档正文。',
+  'Invalid DOCX stored ZIP size.': 'DOCX 文件包的存储大小不一致。',
+  'DOCX actual expansion exceeds its declared size or memory safety limit.': 'DOCX 实际解压大小超过声明值或内存安全上限，已停止处理。',
+  'DOCX has invalid decompressed ZIP sizes.': 'DOCX 解压后的大小与声明值不一致。',
+  'DOCX contains invalid compressed data.': 'DOCX 文件包包含损坏的压缩数据。',
+  'Invalid output extension.': '输出文件扩展名无效。',
+  'Data conversion timed out. Try a smaller file.': '数据转换超时，请尝试更小的文件。',
+  'The local data worker could not start. Reload and try again.': '本地数据处理线程未能启动，请刷新页面后重试。',
+  'This conversion is not supported for the selected file.': '当前文件不支持所选的转换路线。',
+  'DOCX contains no readable text.': '这个 DOCX 文档没有可读取的文字。',
+  'This data file is empty.': '这个数据文件为空。',
+  'Invalid CSV: headers must be nonempty and unique.': 'CSV 列名不能为空，也不能重复。',
+  'Invalid CSV: a row has a different number of fields from the header.': 'CSV 某一行的字段数量与列名数量不一致。',
+  'CSV exceeds the 100,000-row safety limit.': 'CSV 超过 100,000 行的安全上限。',
+  'CSV output exceeds the browser memory safety limit (1 million cells / 32 MB estimated output).': '数据输出超过浏览器内存安全上限：100 万个单元格或预估 32 MB 的结果。',
+  'Unsupported data conversion.': '暂不支持所选的数据转换路线。',
+  'Invalid JSON. Check quotes, commas and brackets.': 'JSON 格式无效，请检查引号、逗号和括号。',
+  'JSON → CSV requires an array of flat objects.': 'JSON 转 CSV 需要一个由扁平对象组成的数组。',
+  'The JSON array is empty; there are no columns to export.': 'JSON 数组为空，没有可以导出的列。',
+  'JSON exceeds the 100,000-row safety limit.': 'JSON 超过 100,000 行的安全上限。',
+  'Complex nested JSON → CSV is not supported in this version. Use flat objects with scalar values.': '当前版本不支持复杂嵌套的 JSON 转 CSV。请使用值为文本、数字、布尔值或 null 的扁平对象。',
+  'JSON objects must have nonempty column names.': 'JSON 对象的列名不能为空。',
+  'JSON exceeds the 1,000-column safety limit.': 'JSON 超过 1,000 列的安全上限。',
+  'Some Word elements could not be represented; review the output.': '部分 Word 内容无法完整保留，请检查转换结果。',
+  'DOCX conversion timed out. Try a smaller document.': 'DOCX 转换超时，请尝试更小的文档。',
+  'The local DOCX worker could not start. Use a current browser and try again.': '本地 DOCX 处理线程未能启动，请使用新版浏览器后重试。',
+  'Only the first file was imported. Batch conversion is planned for a later version.': '已导入第一个文件，当前版本暂不支持批量转换。',
+  'Unable to open this file.': '无法打开这个文件，请检查文件是否损坏。',
+  'Conversion cancelled. Your file stays available to try again.': '转换已取消。文件仍保留在当前任务中，可以再次尝试。',
+  'Conversion cancelled.': '转换已取消。',
+  'Conversion failed. Try a smaller file or check its format.': '转换未能完成，请尝试更小的文件，或检查原始文件格式。',
+};
+
+export function localizeEngineMessage(language: Language, source: string, kind: 'error' | 'warning' = 'error'): string {
+  if (!source || language === 'en') return source;
+  const exact = engineMessages[source];
+  if (exact) return exact;
+  const size = /^This file exceeds the (\d+) MB browser safety limit for (.+)\. Try a smaller file\.$/.exec(source);
+  if (size) return `这个文件超过 ${size[2] === 'Word document' ? 'DOCX' : size[2]} 的 ${size[1]} MB 浏览器安全上限，请使用更小的文件。`;
+  const pages = /^(\d+) page\(s\) have no extractable text\. Scanned content was not converted\.$/.exec(source);
+  if (pages) return `有 ${pages[1]} 页没有可提取的文字，扫描内容未转换。`;
+  const encoding = /^Your browser does not support (.+) encoding\.$/.exec(source);
+  if (encoding) return `当前浏览器不支持 ${encoding[1]} 编码，请选择其他输出格式。`;
+  if (source.startsWith('Invalid CSV:')) return 'CSV 格式无效，请检查分隔符、引号和各行的字段数量。';
+  return translate(language, kind === 'warning' ? 'genericWarning' : 'genericError');
+}

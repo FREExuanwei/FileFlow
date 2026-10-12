@@ -1,0 +1,2 @@
+export interface FinalEvidence {originalUnit:{passed:number;total:number};unit:{passed:number;total:number;pending:number};browser:{passed:number;total:number;phase3:{errors:string[]}};newBrowsers:{engine:string;mode:string;passed:number;total:number;skipped:number;unexpected:number;flaky:number}[];commands:Record<string,{exitCode:number|null;executed:boolean}>;unresolvedHigh:string[];baselineErrors:string[];frozenUnexpected:string[]}
+export function acceptanceErrors(evidence:FinalEvidence):string[];

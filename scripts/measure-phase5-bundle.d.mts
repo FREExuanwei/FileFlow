@@ -1,0 +1,1 @@
+export function measurePhase5Bundle(root:string,baseline:{verifiedRun:unknown;bundle:{path:string;gzipBytes:number}[]}):{pass:boolean;checks:Record<string,{files:string[];gzipBytes:number;pass:boolean;limit:number;increment?:number}>};

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-ocr-info"
+description = "Enables the ocr_info command without any pre-configured scope."
+commands.allow = ["ocr_info"]
+
+[[permission]]
+identifier = "deny-ocr-info"
+description = "Denies the ocr_info command without any pre-configured scope."
+commands.deny = ["ocr_info"]

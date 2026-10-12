@@ -1,0 +1,22 @@
+export type AiFormat = 'pdf' | 'docx' | 'md' | 'html' | 'txt';
+export type Preset = 'conservative' | 'balanced' | 'aggressive';
+export type AiStage = 'extracting' | 'cleaning' | 'structure' | 'estimating' | 'chunking';
+export type CleanupOptions = { mergeLines: boolean; removeHeaders: boolean; removeFooters: boolean; removePageNumbers: boolean; collapseBlankLines: boolean; normalizeHeadings: boolean; normalizeLists: boolean; candidateOverrides: Record<string, 'keep' | 'remove'> };
+export type ChunkOptions = { strategy: 'auto' | 'headings' | 'tokens'; targetEstimatedTokens: 2000 | 4000 | 8000 | 16000; overlapPercent: 0 | 5 | 10 };
+export type AiSettings = { preset: Preset; cleanup: CleanupOptions; chunking: ChunkOptions };
+export type ExtractedLine = { text: string; start: number; end: number; y?: number; fontSize?: number; headingLevel?: number };
+export type ExtractedPage = { number: number; markdown: string; lines: ExtractedLine[]; height?: number; blank: boolean };
+export type AiWarning = { code: 'blank-pages' | 'extraction-limits' | 'aggressive-cleanup' | 'section-split' | 'oversized-block' | 'overlap-shortfall'; count?: number; chunkId?: string };
+export type ExtractedDocument = { sourceFormat: AiFormat; pages: ExtractedPage[]; warnings: AiWarning[] };
+export type SourceRange = { start: number; end: number };
+export type Block = SourceRange & { kind: 'heading' | 'paragraph' | 'list' | 'code' | 'table' | 'quote' | 'math' | 'separator' | 'blank'; level?: number; title?: string; protected?: true };
+export type OutlineEntry = SourceRange & { id: string; level: number; title: string };
+export type RepeatedCandidate = { id: string; kind: 'header' | 'footer'; text: string; occurrences: { page: number; line: number }[]; confidence: 'high' | 'ambiguous'; eligible: boolean; removed: boolean };
+export type CleanupStats = { headersRemoved: number; footersRemoved: number; pageNumbersRemoved: number; linesMerged: number; blankLinesRemoved: number; headingsNormalized: number; listsNormalized: number };
+export type CleanupResult = { markdown: string; stats: CleanupStats; candidates: RepeatedCandidate[]; warnings: AiWarning[] };
+export type DocumentStats = { characters: number; whitespaceDelimitedWords: number; estimatedTokens: number; headings: number; paragraphs: number };
+export type AiChunk = { id: string; ordinal: number; primary: SourceRange; overlap?: SourceRange; estimatedTokens: number; outlineIds: string[]; warnings: AiWarning[] };
+export type AiResult = { extracted: ExtractedDocument; cleaned: CleanupResult; before: DocumentStats; after: DocumentStats; outline: OutlineEntry[]; chunks: AiChunk[] };
+export type ExportFile = { id: string; name: string; kind: 'clean' | 'index' | 'chunk' | 'metadata'; mime: string; estimatedTransientBytes: number; readText: () => string };
+export type AiErrorCode = 'unsupported' | 'invalid-mime' | 'invalid-signature' | 'invalid-encoding' | 'empty-input' | 'invalid-settings' | 'scanned-pdf' | 'damaged-document' | 'input-limit' | 'text-limit' | 'chunk-limit' | 'resource-limit' | 'timeout' | 'worker-failed' | 'cancelled' | 'no-content';
+export class AiError extends Error { constructor(public readonly code: AiErrorCode) { super(code); this.name = 'AiError'; } }

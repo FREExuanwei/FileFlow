@@ -1,0 +1,15 @@
+import {readFileSync} from 'node:fs';
+import Papa from 'papaparse';
+import {test,expect} from './phase5-harness';
+import {fictionalWorkbook,semanticWorkbook} from '../../scripts/phase5-xlsx-fixtures.mjs';
+for(const target of ['csv','json'])test(`real XLSX ${target} download and warnings`,async({page,external})=>{
+  void external;await page.goto('/tests/phase5-browser/phase5-xlsx.html');await page.locator('#action').selectOption(`xlsx-to-${target}`);await page.locator('#input').setInputFiles({name:'fictional.xlsx',mimeType:'application/octet-stream',buffer:semanticWorkbook().bytes});await page.locator('#run').click();await expect(page.locator('#status')).toHaveText('completed');const pending=page.waitForEvent('download');await page.locator('#download').click();const text=readFileSync((await(await pending).path())!,'utf8');
+  if(target==='json')expect(JSON.parse(text)).toEqual([{date:46302,cached:3,missing:null,flag:true}]);else expect(Papa.parse(text).data).toEqual([['date','cached','missing','flag'],['2026-10-07','3','','TRUE']]);expect(JSON.parse((await page.locator('#notices').textContent())!)).toContainEqual({code:'xlsx-formula-missing',count:1});await expect(page.locator('#status')).toHaveAttribute('data-transient','0');
+});
+test('multi-visible requires selection and hidden sheet cannot export',async({page,external})=>{
+  void external;await page.goto('/tests/phase5-browser/phase5-xlsx.html');await page.locator('#action').selectOption('xlsx-to-json');await page.locator('#input').setInputFiles({name:'fictional.xlsx',mimeType:'application/octet-stream',buffer:fictionalWorkbook({sheets:[{name:'A',state:'visible'},{name:'B',state:'visible'},{name:'Hidden',state:'hidden'}]}).bytes});await page.locator('#run').click();await expect(page.locator('#status')).toHaveText('input');await expect(page.locator('#download')).toBeHidden();await page.locator('#sheet').fill('rId3');await page.locator('#run').click();await expect(page.locator('#status')).toHaveText('input');await page.locator('#sheet').fill('rId2');await page.locator('#run').click();await expect(page.locator('#status')).toHaveText('completed');expect(JSON.parse((await page.locator('#preview').textContent())!)).toEqual([{name:'虚构',value:42}]);
+});
+test('cancelled XLSX export publishes no stale download and can retry',async({page,external})=>{
+  void external;await page.goto('/tests/phase5-browser/phase5-xlsx.html');await page.locator('#action').selectOption('xlsx-to-csv');await page.locator('#input').setInputFiles({name:'fictional.xlsx',mimeType:'application/octet-stream',buffer:fictionalWorkbook().bytes});await page.evaluate(()=>{(document.querySelector('#run') as HTMLButtonElement).click();(document.querySelector('#cancel') as HTMLButtonElement).click();});await expect(page.locator('#status')).toHaveText('cancel');await expect(page.locator('#download')).toBeHidden();await expect(page.locator('#status')).toHaveAttribute('data-transient','0');await page.locator('#run').click();await expect(page.locator('#status')).toHaveText('completed');
+});
+

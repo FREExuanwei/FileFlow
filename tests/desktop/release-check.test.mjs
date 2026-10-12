@@ -1,0 +1,8 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {releaseIssues} from '../../scripts/release-check.mjs';
+const healthy=()=>({version:'0.2.0-rc.1',unit:{passed:550,total:550,accepted550Preserved:true},browser:{original:90,phase3:47,retries:0},frozen:{passed:16},rust:{failed:0,unverified:0},checks:Object.fromEntries(['lint','typecheck','webBuild','desktopBuild','npmAudit','nativeAudit','secrets'].map(k=>[k,true])),manual:{status:'PASS — user reported'},installer:{hashVerified:true,signatureStatus:'Valid'},projectLicenseDecisionAuthorized:true,publicReleaseAuthorized:true});
+test('healthy evidence only yields readiness, never a publishing action',()=>assert.deepEqual(releaseIssues(healthy()),[]));
+test('failed native permission test cannot be declared ready',()=>{const r=healthy();r.rust.failed=1;assert.ok(releaseIssues(r).some(x=>x.includes('Rust')));});
+test('unverified native permission test cannot be declared ready',()=>{const r=healthy();r.rust.unverified=1;assert.ok(releaseIssues(r).some(x=>x.includes('Rust')));});
+test('manual acceptance and unknown publisher remain explicit gates',()=>{const r=healthy();r.manual.status='Pending';r.installer.signatureStatus='NotSigned';assert.equal(releaseIssues(r).length,2);});
+test('owner licensing and publishing decisions cannot be inferred',()=>{const r=healthy();r.projectLicenseDecisionAuthorized=false;r.publicReleaseAuthorized=false;assert.equal(releaseIssues(r).length,2);});
+test('integrity or frozen baseline failure prevents readiness',()=>{const r=healthy();r.installer.hashVerified=false;r.frozen.passed=15;assert.equal(releaseIssues(r).length,2);});

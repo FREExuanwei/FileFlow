@@ -1,0 +1,64 @@
+{
+  "name": "fileflow",
+  "version": "0.2.0-rc.1",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.15.0"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run && npm run test:browser",
+    "test:unit": "vitest run",
+    "test:browser": "npm run build && playwright test",
+    "fixtures": "node scripts/generate-fixtures.mjs",
+    "secrets": "node scripts/scan-secrets.mjs",
+    "predev": "node scripts/prepare-assets.mjs",
+    "prebuild": "node scripts/prepare-assets.mjs",
+    "build:desktop-web": "npm run prebuild && tsc --noEmit && vite build --config vite.desktop.config.ts",
+    "desktop:build": "tauri build -- --locked",
+    "desktop:dev": "tauri dev",
+    "test:desktop-config": "node --test tests/desktop/config.test.mjs"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "2.12.1",
+    "dompurify": "3.4.16",
+    "mammoth": "1.13.0",
+    "markdown-it": "15.0.2",
+    "papaparse": "5.7.0",
+    "pdf-lib": "1.17.1",
+    "pdfjs-dist": "6.4.299",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "turndown": "7.2.4",
+    "xlsx": "file:vendor/xlsx-0.20.3.tgz",
+    "yaml": "2.9.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.63.0",
+    "@tauri-apps/cli": "2.12.1",
+    "@types/markdown-it": "14.2.0",
+    "@types/node": "26.6.4",
+    "@types/papaparse": "5.5.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/turndown": "5.0.6",
+    "@vitejs/plugin-react": "6.1.2",
+    "eslint": "10.12.0",
+    "jsdom": "30.1.2",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.1",
+    "vite": "8.3.3",
+    "vitest": "5.0.3"
+  },
+  "overrides": {
+    "mammoth": {
+      "argparse": "3.0.2"
+    }
+  }
+}

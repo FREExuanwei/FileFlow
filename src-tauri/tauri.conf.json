@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "FileFlow",
+  "version": "0.2.0-rc.1",
+  "identifier": "local.fileflow.desktop",
+  "build": {
+    "frontendDist": "../dist-desktop",
+    "beforeBuildCommand": "npm run build:desktop-web",
+    "removeUnusedCommands": true
+  },
+  "app": {
+    "withGlobalTauri": false,
+    "windows": [],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self'; connect-src 'self' ipc: http://ipc.localhost; worker-src 'self' blob:; frame-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'",
+      "capabilities": ["main"]
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "icon": ["icons/icon.ico"],
+    "resources": ["licenses/*"],
+    "shortDescription": "Private local file conversion",
+    "windows": {
+      "webviewInstallMode": {"type": "skip"},
+      "nsis": {"installMode": "currentUser", "languages": ["English", "SimpChinese"], "displayLanguageSelector": true, "installerHooks": "windows/installer-hooks.nsh", "template": "windows/installer.nsi"}
+    }
+  }
+}

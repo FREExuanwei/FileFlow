@@ -1,0 +1,16 @@
+import {createHash} from 'node:crypto';
+import {test,expect} from './phase5-harness';
+for(const algorithm of ['SHA-256','SHA-512'] as const)for(const [name,bytes] of [['empty',Buffer.alloc(0)],['abc',Buffer.from('abc')],['binary',Buffer.from(Array.from({length:256},(_,i)=>i))],['32MiB',Buffer.alloc(32*1024**2,42)]] as const)test(`real WebCrypto Worker ${algorithm} ${name}`,async({page,external})=>{
+  void external;await page.goto('/tests/phase5-browser/phase5-hash.html');await page.locator('#algorithm').selectOption(algorithm);await page.locator('#input').setInputFiles({name:'fictional.bin',mimeType:'application/octet-stream',buffer:bytes});await page.locator('#run').click();await expect(page.locator('#status')).toHaveText('completed');
+  const result=JSON.parse(await page.locator('#report').innerText());expect(result).toMatchObject({algorithm,scope:'original-bytes',bytes:bytes.length,hash:createHash(algorithm.replace('-','').toLowerCase()).update(bytes).digest('hex')});await expect(page.locator('#status')).toHaveAttribute('data-transient','0');await page.locator('#clear').click();await expect(page.locator('#status')).toHaveAttribute('data-source','0');await expect(page.locator('#report')).toBeEmpty();
+});
+test('real digest remove at grant retains accounting then settles without stale report',async({page,external})=>{
+  void external;await page.goto('/tests/phase5-browser/phase5-hash.html');await page.locator('#remove-grant').check();await page.locator('#input').setInputFiles({name:'fictional.bin',mimeType:'application/octet-stream',buffer:Buffer.alloc(32*1024**2,42)});await page.locator('#run').click();
+  await expect(page.locator('#status')).toHaveText('removed');await expect(page.locator('#status')).toHaveAttribute('data-during-heavy','true');await expect(page.locator('#status')).toHaveAttribute('data-during-source',String(32*1024**2));await expect(page.locator('#status')).toHaveAttribute('data-during-transient',String(98*1024**2));
+  await expect(page.locator('#status')).toHaveAttribute('data-transient','0');await expect(page.locator('#status')).toHaveAttribute('data-source','0');await expect(page.locator('#report')).toBeEmpty();
+  await page.locator('#remove-grant').uncheck();await page.locator('#input').setInputFiles({name:'fictional-new.bin',mimeType:'application/octet-stream',buffer:Buffer.from('abc')});await page.locator('#run').click();await expect(page.locator('#status')).toHaveText('completed');
+});
+test('cancel before ready never publishes a hash and permits a subsequent run',async({page,external})=>{
+  void external;await page.goto('/tests/phase5-browser/phase5-hash.html');await page.locator('#cancel-before').check();await page.locator('#input').setInputFiles({name:'fictional.bin',mimeType:'application/octet-stream',buffer:Buffer.alloc(32*1024**2,42)});await page.locator('#run').click();await expect(page.locator('#status')).toHaveText('cancelled');await expect(page.locator('#status')).toHaveAttribute('data-transient','0');await expect(page.locator('#report')).toBeEmpty();
+  await page.locator('#cancel-before').uncheck();await page.locator('#input').setInputFiles({name:'fictional-new.bin',mimeType:'application/octet-stream',buffer:Buffer.from('abc')});await page.locator('#run').click();await expect(page.locator('#status')).toHaveText('completed');
+});

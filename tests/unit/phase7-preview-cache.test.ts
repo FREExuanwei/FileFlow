@@ -1,0 +1,7 @@
+import {it,expect} from 'vitest';
+import {PdfPixelCache} from '../../src/converters/pdf-tools/cache';
+import {ResourceBudget} from '../../src/core/resources/budget';
+const pixels=(size=400)=>({width:size/4,height:1,data:new Uint8ClampedArray(size).fill(123)}) as ImageData;
+it('bounds cache to three pages, evicts least recent and accounts/releases pixels',()=>{const b=new ResourceBudget(),c=new PdfPixelCache(b);for(const p of[1,2,3])expect(c.set(p,pixels())).toBe(true);expect(b.getTransientUsage()).toBe(1200);c.get(1);c.set(4,pixels());expect(c.get(2)).toBeUndefined();expect(c.get(1)).toBeDefined();expect(b.getTransientUsage()).toBe(1200);c.clear();c.clear();expect(b.getTransientUsage()).toBe(0);});
+it('rejects oversized images and treats an exhausted optional cache budget as a miss',()=>{const b=new ResourceBudget(),c=new PdfPixelCache(b);expect(c.set(1,pixels(7*1024**2))).toBe(false);expect(b.getTransientUsage()).toBe(0);const lease=b.reserve('transient',256*1024**2,'fiction');expect(c.set(1,pixels())).toBe(false);lease.release();expect(c.set(1,pixels())).toBe(true);c.clear();expect(b.getTransientUsage()).toBe(0);});
+it('erases owned pixel arrays on eviction and clearing without changing source files',()=>{const b=new ResourceBudget(),c=new PdfPixelCache(b),first=pixels();c.set(1,first);c.set(1,pixels());expect(first.data.every(n=>n===0)).toBe(true);const last=pixels();c.set(2,last);c.clear();expect(last.data.every(n=>n===0)).toBe(true);});

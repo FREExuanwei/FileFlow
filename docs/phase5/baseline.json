@@ -1,0 +1,1684 @@
+{
+  "schemaVersion": 1,
+  "verifiedRun": {
+    "scope": "Previously accepted original identities; raw local reports withheld."
+  },
+  "originalUnitFiles": [
+    "tests/unit/ai-chunking.test.ts",
+    "tests/unit/ai-cleanup.test.ts",
+    "tests/unit/ai-downloads.test.ts",
+    "tests/unit/ai-export.test.ts",
+    "tests/unit/ai-extract.test.ts",
+    "tests/unit/ai-i18n.test.ts",
+    "tests/unit/ai-pdf-pages.test.ts",
+    "tests/unit/ai-queue.test.ts",
+    "tests/unit/ai-recommendation.test.ts",
+    "tests/unit/ai-structure.test.ts",
+    "tests/unit/ai-tokens.test.ts",
+    "tests/unit/ai-worker.test.ts",
+    "tests/unit/data.test.ts",
+    "tests/unit/docx.test.ts",
+    "tests/unit/files.test.ts",
+    "tests/unit/i18n.test.ts",
+    "tests/unit/limits.test.ts",
+    "tests/unit/markup.test.ts",
+    "tests/unit/pdf.test.ts",
+    "tests/unit/queue.test.ts",
+    "tests/unit/resources.test.ts",
+    "tests/unit/zip-stream.test.ts"
+  ],
+  "originalPhase3BrowserCases": [
+    {
+      "file": "ai-downloads.spec.ts",
+      "title": "batch silent failure preserves all files and individual retry works"
+    },
+    {
+      "file": "ai-downloads.spec.ts",
+      "title": "batch throw failure preserves all files and individual retry works"
+    },
+    {
+      "file": "ai-export.spec.ts",
+      "title": "package names remain unique across formats, truncation and task removal"
+    },
+    {
+      "file": "ai-export.spec.ts",
+      "title": "Unicode and Markdown-delimiter names export working indexes and chunks"
+    },
+    {
+      "file": "ai-export.spec.ts",
+      "title": "line-dense input completes in real Worker and excess scratch is controlled"
+    },
+    {
+      "file": "ai-modes.spec.ts",
+      "title": "mode_switch_preserves_both_queues_and_formats_privacy_explain_ai"
+    },
+    {
+      "file": "ai-modes.spec.ts",
+      "title": "image_mode_reuses_existing_tools_without_destroying_documents"
+    },
+    {
+      "file": "ai-modes.spec.ts",
+      "title": "image_mode_reentry_preserves_chosen_output_and_dimensions"
+    },
+    {
+      "file": "ai-performance.spec.ts",
+      "title": "real Worker performance small"
+    },
+    {
+      "file": "ai-performance.spec.ts",
+      "title": "real Worker performance medium"
+    },
+    {
+      "file": "ai-performance.spec.ts",
+      "title": "real Worker performance large"
+    },
+    {
+      "file": "ai-permission.spec.ts",
+      "title": "native browser automatic-download permission and individual fallback"
+    },
+    {
+      "file": "ai-privacy.spec.ts",
+      "title": "hostile md stays local and sandboxed; reload discards document"
+    },
+    {
+      "file": "ai-privacy.spec.ts",
+      "title": "hostile html stays local and sandboxed; reload discards document"
+    },
+    {
+      "file": "ai-ready.spec.ts",
+      "title": "AI five-format integration: demo.pdf"
+    },
+    {
+      "file": "ai-ready.spec.ts",
+      "title": "AI five-format integration: demo.docx"
+    },
+    {
+      "file": "ai-ready.spec.ts",
+      "title": "AI five-format integration: ai-structure.md"
+    },
+    {
+      "file": "ai-ready.spec.ts",
+      "title": "AI five-format integration: ai-code.html"
+    },
+    {
+      "file": "ai-ready.spec.ts",
+      "title": "AI five-format integration: ai-mixed.txt"
+    },
+    {
+      "file": "ai-ready.spec.ts",
+      "title": "ambiguous PDF body stays in Conservative and Balanced; candidate keep overrides real edges"
+    },
+    {
+      "file": "ai-ready.spec.ts",
+      "title": "long outline source window, chunk integrity and estimate metadata"
+    },
+    {
+      "file": "ai-ready.spec.ts",
+      "title": "AI validation handles malformed encoding and input cap without processing"
+    },
+    {
+      "file": "ai-recommendation.spec.ts",
+      "title": "zh-CN light: clean medium PDF needs no preprocessing and advanced settings stay optional"
+    },
+    {
+      "file": "ai-recommendation.spec.ts",
+      "title": "zh-CN dark: clean medium PDF needs no preprocessing and advanced settings stay optional"
+    },
+    {
+      "file": "ai-recommendation.spec.ts",
+      "title": "en light: clean medium PDF needs no preprocessing and advanced settings stay optional"
+    },
+    {
+      "file": "ai-recommendation.spec.ts",
+      "title": "en dark: clean medium PDF needs no preprocessing and advanced settings stay optional"
+    },
+    {
+      "file": "ai-results.spec.ts",
+      "title": "before_after_summary_and_outline_match_real_result"
+    },
+    {
+      "file": "ai-results.spec.ts",
+      "title": "real_pdf_page_edge_counts_are_shown_and_scanned_pdf_fails"
+    },
+    {
+      "file": "ai-results.spec.ts",
+      "title": "aggressive result warning uses semantic amber rather than normal body color"
+    },
+    {
+      "file": "ai-settings.spec.ts",
+      "title": "zh-CN light: AI defaults and seven options"
+    },
+    {
+      "file": "ai-settings.spec.ts",
+      "title": "zh-CN dark: AI defaults and seven options"
+    },
+    {
+      "file": "ai-settings.spec.ts",
+      "title": "en light: AI defaults and seven options"
+    },
+    {
+      "file": "ai-settings.spec.ts",
+      "title": "en dark: AI defaults and seven options"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "zh-CN light 375: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "zh-CN light 768: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "zh-CN light 1440: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "zh-CN dark 375: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "zh-CN dark 768: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "zh-CN dark 1440: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "en light 375: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "en light 768: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "en light 1440: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "en dark 375: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "en dark 768: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "en dark 1440: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-worker.spec.ts",
+      "title": "real local worker processes and clear releases the document"
+    },
+    {
+      "file": "ai-worker.spec.ts",
+      "title": "cancel and remove a real Worker, switch modes, replace same name without late results"
+    }
+  ],
+  "originalBrowserFiles": [
+    "ai-downloads.spec.ts",
+    "ai-export.spec.ts",
+    "ai-modes.spec.ts",
+    "ai-performance.spec.ts",
+    "ai-permission.spec.ts",
+    "ai-privacy.spec.ts",
+    "ai-ready.spec.ts",
+    "ai-recommendation.spec.ts",
+    "ai-results.spec.ts",
+    "ai-settings.spec.ts",
+    "ai-visual.spec.ts",
+    "ai-worker.spec.ts",
+    "batch.spec.ts",
+    "colors.spec.ts",
+    "conversion.spec.ts",
+    "i18n.spec.ts"
+  ],
+  "originalUnitCases": [
+    {
+      "file": "tests/unit/ai-chunking.test.ts",
+      "title": "nested_fenced_list_is_indivisible_even_above_target"
+    },
+    {
+      "file": "tests/unit/ai-chunking.test.ts",
+      "title": "zero_overlap_roundtrip_is_exact"
+    },
+    {
+      "file": "tests/unit/ai-chunking.test.ts",
+      "title": "oversized_code_or_sentence_is_kept_and_warned"
+    },
+    {
+      "file": "tests/unit/ai-chunking.test.ts",
+      "title": "overlap_is_bounded_and_deduplicable"
+    },
+    {
+      "file": "tests/unit/ai-chunking.test.ts",
+      "title": "long_section_split_at_paragraphs_is_reported"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "literal_heading_hashes_and_nested_fenced_code_are_preserved"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "multiline_indented_code_and_bracket_math_keep_internal_blank_lines"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "edge_text_seen_in_any_page_body_is_ambiguous"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "short_pages_without_non_edge_body_keep_numeric_content"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "high_confidence_pdf_edges_are_removed_per_page"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "conservative_and_balanced_keep_ambiguous_body"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "page_edge_numbers_close_to_body_are_kept"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "english_chinese_merge_preserves_boundaries"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "whitespace_does_not_change_code_math_tables"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "disabled_rules_have_zero_counts_and_conservative_keeps_lines"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "normalization_counts_actual_changes_and_aggressive_warns"
+    },
+    {
+      "file": "tests/unit/ai-downloads.test.ts",
+      "title": "explicit_batch_error_keeps_files_and_individual_downloads"
+    },
+    {
+      "file": "tests/unit/ai-downloads.test.ts",
+      "title": "silent_block_is_not_reported_as_saved_and_stop_disposes_resources"
+    },
+    {
+      "file": "tests/unit/ai-downloads.test.ts",
+      "title": "invalidated_batch_resets_requesting_state_without_losing_files"
+    },
+    {
+      "file": "tests/unit/ai-export.test.ts",
+      "title": "long_unicode_names_never_break_index_generation"
+    },
+    {
+      "file": "tests/unit/ai-export.test.ts",
+      "title": "index_links_roundtrip_markdown_destination_delimiters"
+    },
+    {
+      "file": "tests/unit/ai-export.test.ts",
+      "title": "exports_all_parts_index_metadata_and_unicode"
+    },
+    {
+      "file": "tests/unit/ai-export.test.ts",
+      "title": "metadata_contains_only_allowlisted_fields"
+    },
+    {
+      "file": "tests/unit/ai-extract.test.ts",
+      "title": "txt_is_ai_only_and_strict_utf8"
+    },
+    {
+      "file": "tests/unit/ai-extract.test.ts",
+      "title": "markup_keeps_semantics_and_code_language_spacing"
+    },
+    {
+      "file": "tests/unit/ai-i18n.test.ts",
+      "title": "phase3_dictionaries_have_same_keys_and_estimate_copy"
+    },
+    {
+      "file": "tests/unit/ai-pdf-pages.test.ts",
+      "title": "pdf_retains_page_line_geometry"
+    },
+    {
+      "file": "tests/unit/ai-pdf-pages.test.ts",
+      "title": "legacy_pdf_output_remains_identical"
+    },
+    {
+      "file": "tests/unit/ai-pdf-pages.test.ts",
+      "title": "AI_extraction_stops_at_page_assembly_text_limit"
+    },
+    {
+      "file": "tests/unit/ai-queue.test.ts",
+      "title": "export_names_are_unique_across_formats_truncation_and_removal"
+    },
+    {
+      "file": "tests/unit/ai-queue.test.ts",
+      "title": "line_dense_document_is_rejected_before_unreserved_analysis"
+    },
+    {
+      "file": "tests/unit/ai-queue.test.ts",
+      "title": "late_same_name_result_never_replaces_new_task_and_slots_wait_for_settlement"
+    },
+    {
+      "file": "tests/unit/ai-queue.test.ts",
+      "title": "reanalyze_uses_retained_pages_and_failed_reclean_preserves_previous_chunks"
+    },
+    {
+      "file": "tests/unit/ai-queue.test.ts",
+      "title": "clear_during_pending_import_does_not_publish"
+    },
+    {
+      "file": "tests/unit/ai-recommendation.test.ts",
+      "title": "four_recommendations_are_deterministic_from_existing_data"
+    },
+    {
+      "file": "tests/unit/ai-recommendation.test.ts",
+      "title": "tiny_changes_and_few_page_numbers_do_not_claim_cleanup_benefit"
+    },
+    {
+      "file": "tests/unit/ai-recommendation.test.ts",
+      "title": "meaningful_broken_line_cleanup_and_reduction_are_recognized"
+    },
+    {
+      "file": "tests/unit/ai-recommendation.test.ts",
+      "title": "ambiguous_edges_do_not_justify_cleaning_and_incomplete_pages_stay_reviewable"
+    },
+    {
+      "file": "tests/unit/ai-recommendation.test.ts",
+      "title": "auto_is_default_and_keeps_medium_clean_document_whole"
+    },
+    {
+      "file": "tests/unit/ai-recommendation.test.ts",
+      "title": "explicit_heading_token_size_and_overlap_remain_available"
+    },
+    {
+      "file": "tests/unit/ai-recommendation.test.ts",
+      "title": "auto_only_chunks_above_threshold_and_ignores_hidden_overlap"
+    },
+    {
+      "file": "tests/unit/ai-structure.test.ts",
+      "title": "AI document contracts heading_literal_hashes_survive_outline"
+    },
+    {
+      "file": "tests/unit/ai-structure.test.ts",
+      "title": "AI document contracts multiline_setext_keeps_complete_heading_scope"
+    },
+    {
+      "file": "tests/unit/ai-structure.test.ts",
+      "title": "AI document contracts defaults_are_balanced_auto_zero"
+    },
+    {
+      "file": "tests/unit/ai-structure.test.ts",
+      "title": "AI document contracts blocks_partition_source_without_loss"
+    },
+    {
+      "file": "tests/unit/ai-structure.test.ts",
+      "title": "AI document contracts unclosed_fence_protects_the_remainder"
+    },
+    {
+      "file": "tests/unit/ai-tokens.test.ts",
+      "title": "estimate_is_deterministic_for_all_scripts"
+    },
+    {
+      "file": "tests/unit/ai-tokens.test.ts",
+      "title": "estimate_change_is_honest"
+    },
+    {
+      "file": "tests/unit/ai-worker.test.ts",
+      "title": "abort_terminates_and_discards_late_reply"
+    },
+    {
+      "file": "tests/unit/ai-worker.test.ts",
+      "title": "worker_stages_follow_actual_operations_and_wrong_generation_is_ignored"
+    },
+    {
+      "file": "tests/unit/ai-worker.test.ts",
+      "title": "oversized_document_is_rejected_before_worker_creation"
+    },
+    {
+      "file": "tests/unit/ai-worker.test.ts",
+      "title": "already_aborted_and_invalid_settings_never_create_a_worker"
+    },
+    {
+      "file": "tests/unit/ai-worker.test.ts",
+      "title": "worker_error_post_failure_and_timeout_release_timers_and_terminate"
+    },
+    {
+      "file": "tests/unit/data.test.ts",
+      "title": "CSV and JSON preserves UTF-8 quoted commas, quotes and multiline values"
+    },
+    {
+      "file": "tests/unit/data.test.ts",
+      "title": "CSV and JSON exports union columns without losing later keys"
+    },
+    {
+      "file": "tests/unit/data.test.ts",
+      "title": "CSV and JSON rejects invalid JSON, nested values and non-object arrays"
+    },
+    {
+      "file": "tests/unit/data.test.ts",
+      "title": "CSV and JSON rejects malformed quotes, row mismatch and duplicate/blank headers"
+    },
+    {
+      "file": "tests/unit/data.test.ts",
+      "title": "CSV and JSON escapes spreadsheet formula values and headers"
+    },
+    {
+      "file": "tests/unit/data.test.ts",
+      "title": "CSV and JSON rejects sparse JSON that would expand to too many cells"
+    },
+    {
+      "file": "tests/unit/data.test.ts",
+      "title": "CSV and JSON rejects CSV headers that would amplify output beyond the memory cap"
+    },
+    {
+      "file": "tests/unit/data.test.ts",
+      "title": "CSV and JSON safely preserves special property names"
+    },
+    {
+      "file": "tests/unit/docx.test.ts",
+      "title": "DOCX semantic extraction keeps headings, bold, list and a simple table in Markdown"
+    },
+    {
+      "file": "tests/unit/docx.test.ts",
+      "title": "DOCX semantic extraction extracts readable plain text"
+    },
+    {
+      "file": "tests/unit/docx.test.ts",
+      "title": "DOCX semantic extraction rejects corrupt DOCX"
+    },
+    {
+      "file": "tests/unit/files.test.ts",
+      "title": "file safety recognizes text by matching filename and MIME"
+    },
+    {
+      "file": "tests/unit/files.test.ts",
+      "title": "file safety rejects unsupported files, mismatched MIME and false binary extensions"
+    },
+    {
+      "file": "tests/unit/files.test.ts",
+      "title": "file safety rejects empty and oversized files before conversion"
+    },
+    {
+      "file": "tests/unit/files.test.ts",
+      "title": "file safety creates portable basename-only output names"
+    },
+    {
+      "file": "tests/unit/i18n.test.ts",
+      "title": "local interface language uses simplified Chinese locales and English for traditional Chinese and other locales"
+    },
+    {
+      "file": "tests/unit/i18n.test.ts",
+      "title": "local interface language respects only allowed saved choices and the first browser preference"
+    },
+    {
+      "file": "tests/unit/i18n.test.ts",
+      "title": "local interface language keeps complete dictionary parity and interpolates values"
+    },
+    {
+      "file": "tests/unit/i18n.test.ts",
+      "title": "local interface language presents useful Chinese safety errors and warning values without changing engine messages"
+    },
+    {
+      "file": "tests/unit/i18n.test.ts",
+      "title": "local interface language covers every literal error emitted by current engines and task hook"
+    },
+    {
+      "file": "tests/unit/limits.test.ts",
+      "title": "resource caps and registry rejects pixel bombs before image decoding"
+    },
+    {
+      "file": "tests/unit/limits.test.ts",
+      "title": "resource caps and registry rejects oversized expanded DOCX and unsafe ZIP paths"
+    },
+    {
+      "file": "tests/unit/limits.test.ts",
+      "title": "resource caps and registry rejects forged DOCX entry counts"
+    },
+    {
+      "file": "tests/unit/limits.test.ts",
+      "title": "resource caps and registry lists exactly the fourteen implemented routes without invalid image identities"
+    },
+    {
+      "file": "tests/unit/markup.test.ts",
+      "title": "safe markup conversion keeps headings, emphasis, links, code and simple tables"
+    },
+    {
+      "file": "tests/unit/markup.test.ts",
+      "title": "safe markup conversion renders Markdown as safe semantic HTML"
+    },
+    {
+      "file": "tests/unit/markup.test.ts",
+      "title": "safe markup conversion strips scripts, handlers, SVG, active URLs and external resources"
+    },
+    {
+      "file": "tests/unit/markup.test.ts",
+      "title": "safe markup conversion cannot embed unsafe raw HTML or remote images through Markdown"
+    },
+    {
+      "file": "tests/unit/pdf.test.ts",
+      "title": "PDF local extraction extracts page-organized plain text"
+    },
+    {
+      "file": "tests/unit/pdf.test.ts",
+      "title": "PDF local extraction recognizes basic headings in Markdown"
+    },
+    {
+      "file": "tests/unit/pdf.test.ts",
+      "title": "PDF local extraction rejects no-text PDFs with an honest OCR explanation"
+    },
+    {
+      "file": "tests/unit/pdf.test.ts",
+      "title": "PDF local extraction rejects corrupt PDFs without raw stack traces"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue adds independently, recommends supported routes, and clears completed items"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue continues after failure and retries only the failed job"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue holds cancelled execution slots until settlement and discards removed late results"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue reserves deterministic collision names regardless of completion order"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue serializes heavy documents while allowing a light conversion alongside them"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue reserves import limits synchronously and clear cannot resurrect pending files"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue discards over-budget output and retains its source for retry"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue keeps invalid drafts across selection and prevents both single and batch start"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue collision suffixes survive the download adapter length limit"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue reselects a released source in the same task and protects its result on invalid reselection"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "output controls rejects traversal, reserved names and invalid output dimensions"
+    },
+    {
+      "file": "tests/unit/resources.test.ts",
+      "title": "lease_release_and_failed_resize_are_safe"
+    },
+    {
+      "file": "tests/unit/resources.test.ts",
+      "title": "two_queues_share_reservations_before_async_validation"
+    },
+    {
+      "file": "tests/unit/resources.test.ts",
+      "title": "external_heavy_operation_does_not_block_independent_light_conversion"
+    },
+    {
+      "file": "tests/unit/resources.test.ts",
+      "title": "removing_task_before_queued_restore_releases_reserved_source"
+    },
+    {
+      "file": "tests/unit/zip-stream.test.ts",
+      "title": "validates real decompressed sizes for generated DOCX"
+    },
+    {
+      "file": "tests/unit/zip-stream.test.ts",
+      "title": "rejects forged compressed expansion even if local and central sizes agree"
+    },
+    {
+      "file": "tests/unit/zip-stream.test.ts",
+      "title": "honors cancellation during streamed archive preflight"
+    }
+  ],
+  "preImplementationUnitCases": [
+    {
+      "file": "tests/unit/ai-chunking.test.ts",
+      "title": "nested_fenced_list_is_indivisible_even_above_target"
+    },
+    {
+      "file": "tests/unit/ai-chunking.test.ts",
+      "title": "zero_overlap_roundtrip_is_exact"
+    },
+    {
+      "file": "tests/unit/ai-chunking.test.ts",
+      "title": "oversized_code_or_sentence_is_kept_and_warned"
+    },
+    {
+      "file": "tests/unit/ai-chunking.test.ts",
+      "title": "overlap_is_bounded_and_deduplicable"
+    },
+    {
+      "file": "tests/unit/ai-chunking.test.ts",
+      "title": "long_section_split_at_paragraphs_is_reported"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "literal_heading_hashes_and_nested_fenced_code_are_preserved"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "multiline_indented_code_and_bracket_math_keep_internal_blank_lines"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "edge_text_seen_in_any_page_body_is_ambiguous"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "short_pages_without_non_edge_body_keep_numeric_content"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "high_confidence_pdf_edges_are_removed_per_page"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "conservative_and_balanced_keep_ambiguous_body"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "page_edge_numbers_close_to_body_are_kept"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "english_chinese_merge_preserves_boundaries"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "whitespace_does_not_change_code_math_tables"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "disabled_rules_have_zero_counts_and_conservative_keeps_lines"
+    },
+    {
+      "file": "tests/unit/ai-cleanup.test.ts",
+      "title": "normalization_counts_actual_changes_and_aggressive_warns"
+    },
+    {
+      "file": "tests/unit/ai-downloads.test.ts",
+      "title": "explicit_batch_error_keeps_files_and_individual_downloads"
+    },
+    {
+      "file": "tests/unit/ai-downloads.test.ts",
+      "title": "silent_block_is_not_reported_as_saved_and_stop_disposes_resources"
+    },
+    {
+      "file": "tests/unit/ai-downloads.test.ts",
+      "title": "invalidated_batch_resets_requesting_state_without_losing_files"
+    },
+    {
+      "file": "tests/unit/ai-export.test.ts",
+      "title": "long_unicode_names_never_break_index_generation"
+    },
+    {
+      "file": "tests/unit/ai-export.test.ts",
+      "title": "index_links_roundtrip_markdown_destination_delimiters"
+    },
+    {
+      "file": "tests/unit/ai-export.test.ts",
+      "title": "exports_all_parts_index_metadata_and_unicode"
+    },
+    {
+      "file": "tests/unit/ai-export.test.ts",
+      "title": "metadata_contains_only_allowlisted_fields"
+    },
+    {
+      "file": "tests/unit/ai-extract.test.ts",
+      "title": "txt_is_ai_only_and_strict_utf8"
+    },
+    {
+      "file": "tests/unit/ai-extract.test.ts",
+      "title": "markup_keeps_semantics_and_code_language_spacing"
+    },
+    {
+      "file": "tests/unit/ai-i18n.test.ts",
+      "title": "phase3_dictionaries_have_same_keys_and_estimate_copy"
+    },
+    {
+      "file": "tests/unit/ai-pdf-pages.test.ts",
+      "title": "pdf_retains_page_line_geometry"
+    },
+    {
+      "file": "tests/unit/ai-pdf-pages.test.ts",
+      "title": "legacy_pdf_output_remains_identical"
+    },
+    {
+      "file": "tests/unit/ai-pdf-pages.test.ts",
+      "title": "AI_extraction_stops_at_page_assembly_text_limit"
+    },
+    {
+      "file": "tests/unit/ai-queue.test.ts",
+      "title": "export_names_are_unique_across_formats_truncation_and_removal"
+    },
+    {
+      "file": "tests/unit/ai-queue.test.ts",
+      "title": "line_dense_document_is_rejected_before_unreserved_analysis"
+    },
+    {
+      "file": "tests/unit/ai-queue.test.ts",
+      "title": "late_same_name_result_never_replaces_new_task_and_slots_wait_for_settlement"
+    },
+    {
+      "file": "tests/unit/ai-queue.test.ts",
+      "title": "reanalyze_uses_retained_pages_and_failed_reclean_preserves_previous_chunks"
+    },
+    {
+      "file": "tests/unit/ai-queue.test.ts",
+      "title": "clear_during_pending_import_does_not_publish"
+    },
+    {
+      "file": "tests/unit/ai-recommendation.test.ts",
+      "title": "four_recommendations_are_deterministic_from_existing_data"
+    },
+    {
+      "file": "tests/unit/ai-recommendation.test.ts",
+      "title": "tiny_changes_and_few_page_numbers_do_not_claim_cleanup_benefit"
+    },
+    {
+      "file": "tests/unit/ai-recommendation.test.ts",
+      "title": "meaningful_broken_line_cleanup_and_reduction_are_recognized"
+    },
+    {
+      "file": "tests/unit/ai-recommendation.test.ts",
+      "title": "ambiguous_edges_do_not_justify_cleaning_and_incomplete_pages_stay_reviewable"
+    },
+    {
+      "file": "tests/unit/ai-recommendation.test.ts",
+      "title": "auto_is_default_and_keeps_medium_clean_document_whole"
+    },
+    {
+      "file": "tests/unit/ai-recommendation.test.ts",
+      "title": "explicit_heading_token_size_and_overlap_remain_available"
+    },
+    {
+      "file": "tests/unit/ai-recommendation.test.ts",
+      "title": "auto_only_chunks_above_threshold_and_ignores_hidden_overlap"
+    },
+    {
+      "file": "tests/unit/ai-structure.test.ts",
+      "title": "AI document contracts heading_literal_hashes_survive_outline"
+    },
+    {
+      "file": "tests/unit/ai-structure.test.ts",
+      "title": "AI document contracts multiline_setext_keeps_complete_heading_scope"
+    },
+    {
+      "file": "tests/unit/ai-structure.test.ts",
+      "title": "AI document contracts defaults_are_balanced_auto_zero"
+    },
+    {
+      "file": "tests/unit/ai-structure.test.ts",
+      "title": "AI document contracts blocks_partition_source_without_loss"
+    },
+    {
+      "file": "tests/unit/ai-structure.test.ts",
+      "title": "AI document contracts unclosed_fence_protects_the_remainder"
+    },
+    {
+      "file": "tests/unit/ai-tokens.test.ts",
+      "title": "estimate_is_deterministic_for_all_scripts"
+    },
+    {
+      "file": "tests/unit/ai-tokens.test.ts",
+      "title": "estimate_change_is_honest"
+    },
+    {
+      "file": "tests/unit/ai-worker.test.ts",
+      "title": "abort_terminates_and_discards_late_reply"
+    },
+    {
+      "file": "tests/unit/ai-worker.test.ts",
+      "title": "worker_stages_follow_actual_operations_and_wrong_generation_is_ignored"
+    },
+    {
+      "file": "tests/unit/ai-worker.test.ts",
+      "title": "oversized_document_is_rejected_before_worker_creation"
+    },
+    {
+      "file": "tests/unit/ai-worker.test.ts",
+      "title": "already_aborted_and_invalid_settings_never_create_a_worker"
+    },
+    {
+      "file": "tests/unit/ai-worker.test.ts",
+      "title": "worker_error_post_failure_and_timeout_release_timers_and_terminate"
+    },
+    {
+      "file": "tests/unit/data.test.ts",
+      "title": "CSV and JSON preserves UTF-8 quoted commas, quotes and multiline values"
+    },
+    {
+      "file": "tests/unit/data.test.ts",
+      "title": "CSV and JSON exports union columns without losing later keys"
+    },
+    {
+      "file": "tests/unit/data.test.ts",
+      "title": "CSV and JSON rejects invalid JSON, nested values and non-object arrays"
+    },
+    {
+      "file": "tests/unit/data.test.ts",
+      "title": "CSV and JSON rejects malformed quotes, row mismatch and duplicate/blank headers"
+    },
+    {
+      "file": "tests/unit/data.test.ts",
+      "title": "CSV and JSON escapes spreadsheet formula values and headers"
+    },
+    {
+      "file": "tests/unit/data.test.ts",
+      "title": "CSV and JSON rejects sparse JSON that would expand to too many cells"
+    },
+    {
+      "file": "tests/unit/data.test.ts",
+      "title": "CSV and JSON rejects CSV headers that would amplify output beyond the memory cap"
+    },
+    {
+      "file": "tests/unit/data.test.ts",
+      "title": "CSV and JSON safely preserves special property names"
+    },
+    {
+      "file": "tests/unit/docx.test.ts",
+      "title": "DOCX semantic extraction keeps headings, bold, list and a simple table in Markdown"
+    },
+    {
+      "file": "tests/unit/docx.test.ts",
+      "title": "DOCX semantic extraction extracts readable plain text"
+    },
+    {
+      "file": "tests/unit/docx.test.ts",
+      "title": "DOCX semantic extraction rejects corrupt DOCX"
+    },
+    {
+      "file": "tests/unit/files.test.ts",
+      "title": "file safety recognizes text by matching filename and MIME"
+    },
+    {
+      "file": "tests/unit/files.test.ts",
+      "title": "file safety rejects unsupported files, mismatched MIME and false binary extensions"
+    },
+    {
+      "file": "tests/unit/files.test.ts",
+      "title": "file safety rejects empty and oversized files before conversion"
+    },
+    {
+      "file": "tests/unit/files.test.ts",
+      "title": "file safety creates portable basename-only output names"
+    },
+    {
+      "file": "tests/unit/i18n.test.ts",
+      "title": "local interface language uses simplified Chinese locales and English for traditional Chinese and other locales"
+    },
+    {
+      "file": "tests/unit/i18n.test.ts",
+      "title": "local interface language respects only allowed saved choices and the first browser preference"
+    },
+    {
+      "file": "tests/unit/i18n.test.ts",
+      "title": "local interface language keeps complete dictionary parity and interpolates values"
+    },
+    {
+      "file": "tests/unit/i18n.test.ts",
+      "title": "local interface language presents useful Chinese safety errors and warning values without changing engine messages"
+    },
+    {
+      "file": "tests/unit/i18n.test.ts",
+      "title": "local interface language covers every literal error emitted by current engines and task hook"
+    },
+    {
+      "file": "tests/unit/limits.test.ts",
+      "title": "resource caps and registry rejects pixel bombs before image decoding"
+    },
+    {
+      "file": "tests/unit/limits.test.ts",
+      "title": "resource caps and registry rejects oversized expanded DOCX and unsafe ZIP paths"
+    },
+    {
+      "file": "tests/unit/limits.test.ts",
+      "title": "resource caps and registry rejects forged DOCX entry counts"
+    },
+    {
+      "file": "tests/unit/limits.test.ts",
+      "title": "resource caps and registry lists exactly the fourteen implemented routes without invalid image identities"
+    },
+    {
+      "file": "tests/unit/markup.test.ts",
+      "title": "safe markup conversion keeps headings, emphasis, links, code and simple tables"
+    },
+    {
+      "file": "tests/unit/markup.test.ts",
+      "title": "safe markup conversion renders Markdown as safe semantic HTML"
+    },
+    {
+      "file": "tests/unit/markup.test.ts",
+      "title": "safe markup conversion strips scripts, handlers, SVG, active URLs and external resources"
+    },
+    {
+      "file": "tests/unit/markup.test.ts",
+      "title": "safe markup conversion cannot embed unsafe raw HTML or remote images through Markdown"
+    },
+    {
+      "file": "tests/unit/ocr-assets.test.ts",
+      "title": "accepts_complete_fixed_version_local_manifest"
+    },
+    {
+      "file": "tests/unit/ocr-assets.test.ts",
+      "title": "rejects_external_or_unsafe_asset_path_https://cdn.example.invalid/core.wasm.js"
+    },
+    {
+      "file": "tests/unit/ocr-assets.test.ts",
+      "title": "rejects_external_or_unsafe_asset_path_//cdn.example.invalid/core.js"
+    },
+    {
+      "file": "tests/unit/ocr-assets.test.ts",
+      "title": "rejects_external_or_unsafe_asset_path_/assets/ocr/../private.txt"
+    },
+    {
+      "file": "tests/unit/ocr-assets.test.ts",
+      "title": "rejects_external_or_unsafe_asset_path_/assets/ocr/file.js?content=fictional"
+    },
+    {
+      "file": "tests/unit/ocr-assets.test.ts",
+      "title": "rejects_external_or_unsafe_asset_path_/assets/ocr/%2e%2e/file.js"
+    },
+    {
+      "file": "tests/unit/ocr-assets.test.ts",
+      "title": "rejects_external_or_unsafe_asset_path_/assets/ocr/file.js#fragment"
+    },
+    {
+      "file": "tests/unit/ocr-assets.test.ts",
+      "title": "rejects_external_or_unsafe_asset_path_/assets/ocr/file\\name.js"
+    },
+    {
+      "file": "tests/unit/ocr-assets.test.ts",
+      "title": "rejects_missing_licenseReferences"
+    },
+    {
+      "file": "tests/unit/ocr-assets.test.ts",
+      "title": "rejects_missing_noticeReferences"
+    },
+    {
+      "file": "tests/unit/ocr-assets.test.ts",
+      "title": "detects_one_byte_tamper_and_wrong_size"
+    },
+    {
+      "file": "tests/unit/ocr-assets.test.ts",
+      "title": "rejects_unapproved_language_and_missing_local_asset"
+    },
+    {
+      "file": "tests/unit/ocr-assets.test.ts",
+      "title": "rejects_unpinned_version_and_duplicate_or_invalid_fingerprint"
+    },
+    {
+      "file": "tests/unit/ocr-assets.test.ts",
+      "title": "copies_only_hash_verified_files_and_rejects_path_escape_without_writing"
+    },
+    {
+      "file": "tests/unit/ocr-assets.test.ts",
+      "title": "rejects_symlink_source_and_destination"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "accepts_bounded_ocr_content_without_rewriting_it"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "contract_errors_expose_structured_codes_for_the_ocr_presentation_adapter"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "failed_retry_preserves_distinct_committed_revision_and_parameters"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "text_layer_content_has_no_invented_ocr_parameters"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_duplicate_page_number"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_out_of_range_page"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_fractional_page"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_physical_page_limit"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_no_pages"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_missing_page_record"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_unsupported_schema"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_unknown_language"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_illegal_rotation"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_unsupported_quality"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_unsupported_preprocessing"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_unknown_error"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_unknown_warning"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_warning_page_outside_document"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_non_finite_confidence"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_confidence_above_100"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_non_finite_box"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_box_outside_frame"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_box_without_frame"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_non_finite_matrix"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_singular_matrix"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_oversized_raster"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_oversized_page_text"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_oversized_lines"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_future_committed_revision"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_completed_without_content"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_text_layer_fake_confidence"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_private_extra_field"
+    },
+    {
+      "file": "tests/unit/ocr-contracts.test.ts",
+      "title": "rejects_document_wide_text_and_line_overflow"
+    },
+    {
+      "file": "tests/unit/ocr-freeze-policy.test.ts",
+      "title": "detects_frozen_algorithm_change_without_rebaselining"
+    },
+    {
+      "file": "tests/unit/ocr-freeze-policy.test.ts",
+      "title": "distinguishes_approved_dependency_addition_from_algorithm_change"
+    },
+    {
+      "file": "tests/unit/ocr-freeze-policy.test.ts",
+      "title": "rejects_unapproved_upgrade_of_an_existing_dependency"
+    },
+    {
+      "file": "tests/unit/ocr-freeze-policy.test.ts",
+      "title": "rejects_removal_of_a_frozen_dependency"
+    },
+    {
+      "file": "tests/unit/ocr-freeze-policy.test.ts",
+      "title": "protected_algorithm_cannot_be_made_mutable_by_integration_allowlist"
+    },
+    {
+      "file": "tests/unit/ocr-resources.test.ts",
+      "title": "transient_256_mib_plus_one_fails_closed"
+    },
+    {
+      "file": "tests/unit/ocr-resources.test.ts",
+      "title": "failed_resize_does_not_erase_other_leases"
+    },
+    {
+      "file": "tests/unit/ocr-resources.test.ts",
+      "title": "release_is_idempotent_and_notifies_shared_subscribers"
+    },
+    {
+      "file": "tests/unit/ocr-resources.test.ts",
+      "title": "source_result_limits_stay_200_128"
+    },
+    {
+      "file": "tests/unit/ocr-resources.test.ts",
+      "title": "run_reserves_engine_and_transport_once_not_page_or_preview_bytes"
+    },
+    {
+      "file": "tests/unit/ocr-resources.test.ts",
+      "title": "failed_atomic_run_reservation_preserves_existing_source_result_and_transient"
+    },
+    {
+      "file": "tests/unit/ocr-resources.test.ts",
+      "title": "invalid_transient_bytes_NaN_fail_closed"
+    },
+    {
+      "file": "tests/unit/ocr-resources.test.ts",
+      "title": "invalid_transient_bytes_-1_fail_closed"
+    },
+    {
+      "file": "tests/unit/ocr-resources.test.ts",
+      "title": "invalid_transient_bytes_0.5_fail_closed"
+    },
+    {
+      "file": "tests/unit/ocr-resources.test.ts",
+      "title": "invalid_transient_bytes_Infinity_fail_closed"
+    },
+    {
+      "file": "tests/unit/ocr-resources.test.ts",
+      "title": "profile_cannot_raise_total_cap_or_pixel_cap"
+    },
+    {
+      "file": "tests/unit/pdf.test.ts",
+      "title": "PDF local extraction extracts page-organized plain text"
+    },
+    {
+      "file": "tests/unit/pdf.test.ts",
+      "title": "PDF local extraction recognizes basic headings in Markdown"
+    },
+    {
+      "file": "tests/unit/pdf.test.ts",
+      "title": "PDF local extraction rejects no-text PDFs with an honest OCR explanation"
+    },
+    {
+      "file": "tests/unit/pdf.test.ts",
+      "title": "PDF local extraction rejects corrupt PDFs without raw stack traces"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue adds independently, recommends supported routes, and clears completed items"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue continues after failure and retries only the failed job"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue holds cancelled execution slots until settlement and discards removed late results"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue reserves deterministic collision names regardless of completion order"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue serializes heavy documents while allowing a light conversion alongside them"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue reserves import limits synchronously and clear cannot resurrect pending files"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue discards over-budget output and retains its source for retry"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue keeps invalid drafts across selection and prevents both single and batch start"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue collision suffixes survive the download adapter length limit"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "bounded memory-only conversion queue reselects a released source in the same task and protects its result on invalid reselection"
+    },
+    {
+      "file": "tests/unit/queue.test.ts",
+      "title": "output controls rejects traversal, reserved names and invalid output dimensions"
+    },
+    {
+      "file": "tests/unit/resources.test.ts",
+      "title": "lease_release_and_failed_resize_are_safe"
+    },
+    {
+      "file": "tests/unit/resources.test.ts",
+      "title": "two_queues_share_reservations_before_async_validation"
+    },
+    {
+      "file": "tests/unit/resources.test.ts",
+      "title": "external_heavy_operation_does_not_block_independent_light_conversion"
+    },
+    {
+      "file": "tests/unit/resources.test.ts",
+      "title": "removing_task_before_queued_restore_releases_reserved_source"
+    },
+    {
+      "file": "tests/unit/zip-stream.test.ts",
+      "title": "validates real decompressed sizes for generated DOCX"
+    },
+    {
+      "file": "tests/unit/zip-stream.test.ts",
+      "title": "rejects forged compressed expansion even if local and central sizes agree"
+    },
+    {
+      "file": "tests/unit/zip-stream.test.ts",
+      "title": "honors cancellation during streamed archive preflight"
+    }
+  ],
+  "originalBrowserCases": [
+    {
+      "file": "ai-downloads.spec.ts",
+      "title": "batch silent failure preserves all files and individual retry works"
+    },
+    {
+      "file": "ai-downloads.spec.ts",
+      "title": "batch throw failure preserves all files and individual retry works"
+    },
+    {
+      "file": "ai-export.spec.ts",
+      "title": "package names remain unique across formats, truncation and task removal"
+    },
+    {
+      "file": "ai-export.spec.ts",
+      "title": "Unicode and Markdown-delimiter names export working indexes and chunks"
+    },
+    {
+      "file": "ai-export.spec.ts",
+      "title": "line-dense input completes in real Worker and excess scratch is controlled"
+    },
+    {
+      "file": "ai-modes.spec.ts",
+      "title": "mode_switch_preserves_both_queues_and_formats_privacy_explain_ai"
+    },
+    {
+      "file": "ai-modes.spec.ts",
+      "title": "image_mode_reuses_existing_tools_without_destroying_documents"
+    },
+    {
+      "file": "ai-modes.spec.ts",
+      "title": "image_mode_reentry_preserves_chosen_output_and_dimensions"
+    },
+    {
+      "file": "ai-performance.spec.ts",
+      "title": "real Worker performance small"
+    },
+    {
+      "file": "ai-performance.spec.ts",
+      "title": "real Worker performance medium"
+    },
+    {
+      "file": "ai-performance.spec.ts",
+      "title": "real Worker performance large"
+    },
+    {
+      "file": "ai-permission.spec.ts",
+      "title": "native browser automatic-download permission and individual fallback"
+    },
+    {
+      "file": "ai-privacy.spec.ts",
+      "title": "hostile md stays local and sandboxed; reload discards document"
+    },
+    {
+      "file": "ai-privacy.spec.ts",
+      "title": "hostile html stays local and sandboxed; reload discards document"
+    },
+    {
+      "file": "ai-ready.spec.ts",
+      "title": "AI five-format integration: demo.pdf"
+    },
+    {
+      "file": "ai-ready.spec.ts",
+      "title": "AI five-format integration: demo.docx"
+    },
+    {
+      "file": "ai-ready.spec.ts",
+      "title": "AI five-format integration: ai-structure.md"
+    },
+    {
+      "file": "ai-ready.spec.ts",
+      "title": "AI five-format integration: ai-code.html"
+    },
+    {
+      "file": "ai-ready.spec.ts",
+      "title": "AI five-format integration: ai-mixed.txt"
+    },
+    {
+      "file": "ai-ready.spec.ts",
+      "title": "ambiguous PDF body stays in Conservative and Balanced; candidate keep overrides real edges"
+    },
+    {
+      "file": "ai-ready.spec.ts",
+      "title": "long outline source window, chunk integrity and estimate metadata"
+    },
+    {
+      "file": "ai-ready.spec.ts",
+      "title": "AI validation handles malformed encoding and input cap without processing"
+    },
+    {
+      "file": "ai-recommendation.spec.ts",
+      "title": "zh-CN light: clean medium PDF needs no preprocessing and advanced settings stay optional"
+    },
+    {
+      "file": "ai-recommendation.spec.ts",
+      "title": "zh-CN dark: clean medium PDF needs no preprocessing and advanced settings stay optional"
+    },
+    {
+      "file": "ai-recommendation.spec.ts",
+      "title": "en light: clean medium PDF needs no preprocessing and advanced settings stay optional"
+    },
+    {
+      "file": "ai-recommendation.spec.ts",
+      "title": "en dark: clean medium PDF needs no preprocessing and advanced settings stay optional"
+    },
+    {
+      "file": "ai-results.spec.ts",
+      "title": "before_after_summary_and_outline_match_real_result"
+    },
+    {
+      "file": "ai-results.spec.ts",
+      "title": "real_pdf_page_edge_counts_are_shown_and_scanned_pdf_fails"
+    },
+    {
+      "file": "ai-results.spec.ts",
+      "title": "aggressive result warning uses semantic amber rather than normal body color"
+    },
+    {
+      "file": "ai-settings.spec.ts",
+      "title": "zh-CN light: AI defaults and seven options"
+    },
+    {
+      "file": "ai-settings.spec.ts",
+      "title": "zh-CN dark: AI defaults and seven options"
+    },
+    {
+      "file": "ai-settings.spec.ts",
+      "title": "en light: AI defaults and seven options"
+    },
+    {
+      "file": "ai-settings.spec.ts",
+      "title": "en dark: AI defaults and seven options"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "zh-CN light 375: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "zh-CN light 768: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "zh-CN light 1440: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "zh-CN dark 375: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "zh-CN dark 768: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "zh-CN dark 1440: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "en light 375: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "en light 768: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "en light 1440: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "en dark 375: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "en dark 768: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-visual.spec.ts",
+      "title": "en dark 1440: AI visual and keyboard acceptance"
+    },
+    {
+      "file": "ai-worker.spec.ts",
+      "title": "real local worker processes and clear releases the document"
+    },
+    {
+      "file": "ai-worker.spec.ts",
+      "title": "cancel and remove a real Worker, switch modes, replace same name without late results"
+    },
+    {
+      "file": "batch.spec.ts",
+      "title": "mixed batch: independent failure, retry, add/remove, downloads and memory-only reload"
+    },
+    {
+      "file": "batch.spec.ts",
+      "title": "same format batch applies target and rejects unsafe names; collisions match downloads"
+    },
+    {
+      "file": "batch.spec.ts",
+      "title": "image tools validate before canvas allocation and preserve aspect ratio and PNG quality behavior"
+    },
+    {
+      "file": "batch.spec.ts",
+      "title": "download-all naming stays unique when completed tasks are removed mid-download"
+    },
+    {
+      "file": "batch.spec.ts",
+      "title": "EXIF-rotated JPEG keeps its displayed aspect ratio and strips metadata"
+    },
+    {
+      "file": "batch.spec.ts",
+      "title": "zh-CN light: workspace, mobile panels, queue persistence and local drag"
+    },
+    {
+      "file": "batch.spec.ts",
+      "title": "zh-CN dark: workspace, mobile panels, queue persistence and local drag"
+    },
+    {
+      "file": "batch.spec.ts",
+      "title": "en light: workspace, mobile panels, queue persistence and local drag"
+    },
+    {
+      "file": "batch.spec.ts",
+      "title": "en dark: workspace, mobile panels, queue persistence and local drag"
+    },
+    {
+      "file": "batch.spec.ts",
+      "title": "language and theme switches preserve running batch, clear aborts and never resurrects results"
+    },
+    {
+      "file": "colors.spec.ts",
+      "title": "zh-CN light: category, semantic, hover and focus color roles"
+    },
+    {
+      "file": "colors.spec.ts",
+      "title": "zh-CN dark: category, semantic, hover and focus color roles"
+    },
+    {
+      "file": "colors.spec.ts",
+      "title": "en light: category, semantic, hover and focus color roles"
+    },
+    {
+      "file": "colors.spec.ts",
+      "title": "en dark: category, semantic, hover and focus color roles"
+    },
+    {
+      "file": "colors.spec.ts",
+      "title": "neutral layers and category/state text retain contrast in both themes"
+    },
+    {
+      "file": "conversion.spec.ts",
+      "title": "home imports a fictional file, previews and downloads local output"
+    },
+    {
+      "file": "conversion.spec.ts",
+      "title": "demo.pdf → pdf-to-md works with actual browser libraries"
+    },
+    {
+      "file": "conversion.spec.ts",
+      "title": "demo.pdf → pdf-to-txt works with actual browser libraries"
+    },
+    {
+      "file": "conversion.spec.ts",
+      "title": "demo.docx → docx-to-md works with actual browser libraries"
+    },
+    {
+      "file": "conversion.spec.ts",
+      "title": "demo.docx → docx-to-txt works with actual browser libraries"
+    },
+    {
+      "file": "conversion.spec.ts",
+      "title": "demo.html → html-to-md works with actual browser libraries"
+    },
+    {
+      "file": "conversion.spec.ts",
+      "title": "demo.md → md-to-html works with actual browser libraries"
+    },
+    {
+      "file": "conversion.spec.ts",
+      "title": "demo.json → json-to-csv works with actual browser libraries"
+    },
+    {
+      "file": "conversion.spec.ts",
+      "title": "scanned and corrupt documents show useful errors"
+    },
+    {
+      "file": "conversion.spec.ts",
+      "title": "hostile markup preview makes no external requests and stores no file data"
+    },
+    {
+      "file": "conversion.spec.ts",
+      "title": "PNG, JPEG and WebP convert in all six directions and strip fictional EXIF"
+    },
+    {
+      "file": "conversion.spec.ts",
+      "title": "responsive themes and keyboard controls"
+    },
+    {
+      "file": "conversion.spec.ts",
+      "title": "privacy dialog traps keyboard focus and restores the invoking control"
+    },
+    {
+      "file": "conversion.spec.ts",
+      "title": "cancelling DOCX terminates its worker and a new task cannot receive its result"
+    },
+    {
+      "file": "i18n.spec.ts",
+      "title": "simplified Chinese default and language switch preserve an active conversion result"
+    },
+    {
+      "file": "i18n.spec.ts",
+      "title": "zh-CN light: visual states, responsive layout and keyboard"
+    },
+    {
+      "file": "i18n.spec.ts",
+      "title": "zh-CN dark: visual states, responsive layout and keyboard"
+    },
+    {
+      "file": "i18n.spec.ts",
+      "title": "zh-CN system: visual states, responsive layout and keyboard"
+    },
+    {
+      "file": "i18n.spec.ts",
+      "title": "en light: visual states, responsive layout and keyboard"
+    },
+    {
+      "file": "i18n.spec.ts",
+      "title": "en dark: visual states, responsive layout and keyboard"
+    },
+    {
+      "file": "i18n.spec.ts",
+      "title": "en system: visual states, responsive layout and keyboard"
+    },
+    {
+      "file": "i18n.spec.ts",
+      "title": "Chinese error and warning states, limits and task notices"
+    },
+    {
+      "file": "i18n.spec.ts",
+      "title": "changing language during conversion preserves task and cancel translates immediately"
+    },
+    {
+      "file": "i18n.spec.ts",
+      "title": "document preview follows app theme and preserves its strict sandbox"
+    },
+    {
+      "file": "i18n.spec.ts",
+      "title": "light and dark text tokens meet basic contrast targets"
+    },
+    {
+      "file": "i18n.spec.ts",
+      "title": "Chinese DOCX details and metadata translate fully, then clear restores browse focus"
+    },
+    {
+      "file": "i18n.spec.ts",
+      "title": "headers fit intermediate breakpoints in both languages"
+    },
+    {
+      "file": "i18n.spec.ts",
+      "title": "language remains usable when preference storage is blocked"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+import {test,expect,enterAi} from './ai-harness';
+for(const extension of ['md','html'])test(`hostile ${extension} stays local and sandboxed; reload discards document`,async({page})=>{
+  await enterAi(page);const hostile='<h1>Fictional privacy marker</h1><script>window.parent.hacked=true</script><img src="https://example.com/track"><iframe src="https://example.com/"></iframe><a href="javascript:alert(1)">evil</a><pre class="language-js"><code>  const fictional = 1;</code></pre>';
+  await page.locator('input[type=file]').setInputFiles({name:`fictional-private-marker.${extension}`,mimeType:extension==='html'?'text/html':'text/markdown',buffer:Buffer.from(hostile)});await page.locator('.ai-process').click();await expect(page.locator('.ai-clean-summary')).toBeVisible();await expect(page.locator('iframe')).toHaveAttribute('sandbox','');
+  await expect(page.frameLocator('iframe').locator('body')).toContainText('Fictional privacy marker');await expect(page.frameLocator('iframe').locator('script,img,iframe')).toHaveCount(0);expect(await page.evaluate(()=>!!(window as unknown as {hacked?:boolean}).hacked)).toBe(false);
+  expect(await page.evaluate(()=>JSON.stringify({...localStorage,...sessionStorage}))).not.toContain('fictional-private-marker');await page.reload();await page.getByRole('button',{name:'AI Ready',exact:true}).click();await expect(page.locator('.queue-row')).toHaveCount(0);
+});

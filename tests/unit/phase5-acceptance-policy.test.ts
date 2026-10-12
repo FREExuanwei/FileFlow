@@ -1,0 +1,9 @@
+import {expect,it} from 'vitest';
+import {acceptanceErrors,type FinalEvidence} from '../../scripts/phase5-acceptance.mjs';
+const good=():FinalEvidence=>({originalUnit:{passed:103,total:103},unit:{passed:500,total:500,pending:0},browser:{passed:90,total:90,phase3:{errors:[]}},newBrowsers:['edge','chrome'].flatMap(engine=>['development','production'].map(mode=>({engine,mode,passed:10,total:10,skipped:0,unexpected:0,flaky:0}))),commands:Object.fromEntries(['lint','typecheck','build','secrets','audit','dependency-review','bundle'].map(key=>[key,{exitCode:0,executed:true}])),unresolvedHigh:[],baselineErrors:[],frozenUnexpected:[]});
+it('cannot mark complete with missing browser engine or original case',()=>{const e=good();e.newBrowsers=e.newBrowsers.filter(b=>b.engine!=='chrome');expect(acceptanceErrors(e)).not.toEqual([]);const f=good();f.browser.passed=89;expect(acceptanceErrors(f)).not.toEqual([]);});
+it('cannot compose46 plus one into47 pass',()=>{const e=good();e.browser.phase3.errors=['Cases must share one run'];expect(acceptanceErrors(e)).not.toEqual([]);});
+it('unresolved high dependency blocks all phase5 complete',()=>{const e=good();e.unresolvedHigh=['fiction advisory'];expect(acceptanceErrors(e)).not.toEqual([]);});
+it('cannot call unrun audit or secrets pass',()=>{for(const name of ['audit','secrets']){const e=good();delete e.commands[name];expect(acceptanceErrors(e)).not.toEqual([]);}});
+it('cannot rebaseline algorithms or weaken original assertions',()=>{const e=good();e.baselineErrors=['identity changed'];expect(acceptanceErrors(e)).not.toEqual([]);const f=good();f.frozenUnexpected=['frozen source'];expect(acceptanceErrors(f)).not.toEqual([]);});
+it('rejects retry,skip,failure and accepts fully evidenced single-pass run',()=>{expect(acceptanceErrors(good())).toEqual([]);for(const key of ['skipped','unexpected','flaky'] as const){const e=good();e.newBrowsers[0]![key]=1;expect(acceptanceErrors(e)).not.toEqual([]);}});
