@@ -1,0 +1,69 @@
+{
+  "version": "0.2.0-rc.2",
+  "tag": "v0.2.0-rc.2",
+  "sourceBasePublicCommit": "c55a0e3120896cf815a64350edd1618764f241bb",
+  "installer": {
+    "name": "FileFlow_0.2.0-rc.2_x64-setup.exe",
+    "bytes": 4525195,
+    "sha256": "36E03964C48B97CA9205239E4C472655DF62042DF7DCE0DABF9800F9AD8D6054",
+    "authenticode": "NotSigned"
+  },
+  "buildToolchain": {
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+    "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+    "node": "24.20.0",
+    "msvc": "14.44.35207",
+    "windowsSdk": "10.0.26100.0"
+  },
+  "inputsManifest": "product-source-manifest.json",
+  "inputsMatched": 216,
+  "changesFromRc1": {
+    "versionOnlyFiles": [
+      "package-lock.json",
+      "package.json",
+      "src-tauri/Cargo.lock",
+      "src-tauri/Cargo.toml",
+      "src-tauri/tauri.conf.json",
+      "src/i18n/en.ts",
+      "src/i18n/zh-CN.ts"
+    ],
+    "addedResources": [
+      "src-tauri/licenses/DISTRIBUTION-NOTICE.txt",
+      "src-tauri/licenses/MPL-covered-sources.json",
+      "src-tauri/licenses/MPL-cssparser-0.37.0.crate",
+      "src-tauri/licenses/MPL-cssparser-macros-0.7.1.crate",
+      "src-tauri/licenses/MPL-dtoa-short-0.3.5.crate",
+      "src-tauri/licenses/MPL-option-ext-0.2.0.crate",
+      "src-tauri/licenses/MPL-selectors-0.38.0.crate"
+    ],
+    "coreBehaviorChanged": false,
+    "dependencyGraphChanged": false
+  },
+  "compilerPathMapping": {
+    "mechanism": "rustc --remap-path-prefix via CARGO_ENCODED_RUSTFLAGS",
+    "neutralPrefixes": [
+      "/build-user",
+      "/fileflow-workspace",
+      "/toolchain",
+      "/cargo/registry",
+      "/fileflow"
+    ],
+    "scope": "Original absolute host prefixes remain private; apply equivalent mappings to your own build environment. Mapping does not prove all linker/generated paths are remapped."
+  },
+  "packagePayload": {
+    "sha256": "3F6FFB6B65A3139CFE93BBC2AC6684EA4300FAA7AE4745AF54766152058ED16A",
+    "bytes": 6213632
+  },
+  "unbundledBuildOutput": {
+    "sha256": "F5AB630D3640CEFAD5726FD05019B1EFE7F0C1547678874E93F1DD166BD423F7",
+    "bytes": 6213632
+  },
+  "bundleMarker": {
+    "marker": "__TAURI_BUNDLE_TYPE_VAR_",
+    "from": "UNK",
+    "to": "NSS",
+    "byteDifferences": 3,
+    "otherBytesIdentical": true
+  },
+  "notBitIdenticalGuarantee": true
+}

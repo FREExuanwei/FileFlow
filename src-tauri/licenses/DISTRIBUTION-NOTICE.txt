@@ -1,0 +1,13 @@
+FileFlow 0.2.0-rc.2 — Windows release candidate distribution information
+
+This is an unsigned RC, not a stable release, production recommendation or independent security audit. Windows may show unknown-publisher/SmartScreen warnings. Do not disable Windows protections. Windows 11 x64 and WebView2 Evergreen Runtime 154+ are required; the installer does not silently download the runtime.
+
+First-party code: the owner has not selected a general open-source license. Public source visibility does not grant a blanket copying/modification/redistribution license. This notice adds no general first-party source license and does not limit rights to third-party covered software.
+
+Third-party rights and covered source: the accompanying FRONTEND-NOTICES.txt, PDF-ASSET-LICENSES.txt, THIRD-PARTY-NOTICES.txt and PDF-TOOLS notices retain full upstream license texts, attribution and source references. MPL-covered source is supplied offline in the five MPL-*.crate archives in this same licenses directory. See MPL-covered-sources.json for exact component versions, archive names, original official URLs and SHA-256 checksums. Each .crate is an ordinary gzip-compressed tar archive; its source remains available under MPL-2.0. FileFlow does not modify those upstream archives.
+
+Windows.Media.Ocr language resources and WebView2 are supplied by Windows/Microsoft and are not redistributed as models/runtime files here. No model or language-resource download is performed silently.
+
+Native files require explicit user selection and validated short-lived grants. Real junction import/save rejection is verified; privileged Windows symbolic-link fixture creation remains unavailable on the test workstation, so its distinct assertions are unverified. Local WebView2 crash dumps may contain memory; OS/runtime diagnostics and caches remain disclosed trust boundaries. Keep private files, paths, logs and dumps out of public issues.
+
+本包为未签名的 Windows RC 候选，不承诺生产适用性或独立安全审计。请勿关闭 Windows 安全保护。自有源码未选择一般开源许可，第三方权利不受此说明限制。五份未修改的 MPL 源码归档已与本说明一起安装，可离线获取；确切版本、上游网址和 SHA-256 见同目录 MPL-covered-sources.json。Windows OCR 和 WebView2 为系统组件，本包不静默下载模型或运行时。真实 Junction 导入/保存拒绝已验证；特权符号链接夹具仍不可创建，不冒称其断言已通过。

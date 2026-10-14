@@ -4,11 +4,11 @@
 
 [English](README.md) · [Windows 安装](docs/github/windows.md) · [隐私与安全](docs/github/security.md)
 
-当前 **0.2.0-rc.1** 已完成单台 Windows 11 设备上的本人本地验收，仍是发布候选版本，不是正式稳定版、生产推荐或独立安全审计结果。**安装包暂未公开**：检查发现开发机编译路径，权限测试也有未覆盖项。[发行状态](docs/github/release-status.md)。
+当前为 **0.2.0-rc.2 Windows 预发布版**：[下载安装包](https://github.com/FREExuanwei/FileFlow/releases/download/v0.2.0-rc.2/FileFlow_0.2.0-rc.2_x64-setup.exe) · [版本说明](https://github.com/FREExuanwei/FileFlow/releases/tag/v0.2.0-rc.2)。安装包**未签名**。RC.1 已完成单台 Windows 11 设备上的本人本地验收；RC.2 产品逻辑未变，复用该范围并补充包体及关键文件操作验证。不是正式稳定版、生产推荐或独立安全审计结果。[发行状态](docs/github/release-status.md)。
 
 ![虚构表格转换](docs/github/assets/converter-light.png)
 
-截图来自真实 RC 界面，全部使用程序生成的虚构数据。
+截图来自真实 RC.1 界面，RC.2 界面和功能未变；全部使用程序生成的虚构数据。
 
 ## 功能
 
@@ -24,7 +24,19 @@
 
 ## 安装与限制
 
-计划的安装包为 Windows11 x64、未签名、per-user NSIS，要求 WebView2 Evergreen Runtime154+，不会联网安装运行时。当前没有公开下载；后续获批后先核对SHA-256、关闭旧版，遵循[安装指南](docs/github/windows.md)。未知发布者/SmartScreen提示可能出现，不关闭系统防护。
+[**下载 FileFlow 0.2.0-rc.2 Windows x64 安装包**](https://github.com/FREExuanwei/FileFlow/releases/download/v0.2.0-rc.2/FileFlow_0.2.0-rc.2_x64-setup.exe)，4,525,195 字节，约 4.32 MiB。未签名、per-user NSIS，要求 Windows 11 x64 和 WebView2 Evergreen Runtime 154+，不会静默下载运行时。先保存内存结果、正常关闭旧版，遵循[安装指南](docs/github/windows.md)。未知发布者/SmartScreen 提示可能出现，不关闭系统防护。
+
+下载后在 PowerShell 校验，结果不一致则停止安装：
+
+~~~powershell
+(Get-FileHash -LiteralPath .\FileFlow_0.2.0-rc.2_x64-setup.exe -Algorithm SHA256).Hash
+~~~
+
+应为：
+
+~~~text
+36E03964C48B97CA9205239E4C472655DF62042DF7DCE0DABF9800F9AD8D6054
+~~~
 
 | 路线 | Web | Desktop |
 |---|---:|---:|
@@ -41,9 +53,9 @@ OCR最多100物理页/50OCR页，源图24MP，raster6MP/最长边4096。PDF工�
 
 应用没有文件上传、云转换、AI API、账户、API Key、遥测或付费OCR；文件访问经过用户选择、短期FileGrant、Rust路径验证和安全保存。
 
-Windows选择器可能保留历史；WebView2可生成包含内存的受保护本地dump。官方崩溃上传关闭，但不能证明/控制全部Windows诊断；清理只减少残留。符号链接断言仍未覆盖；最新junction补测也在创建夹具时失败，不伪称全绿。[安全范围](docs/github/security.md)。
+Windows选择器可能保留历史；WebView2可生成包含内存的受保护本地dump。官方崩溃上传关闭，但不能证明/控制全部Windows诊断；清理只减少残留。RC.2 的真实 Junction 导入/保存拒绝已验证，目标不变；符号链接夹具仍因 Win32 1314 权限不足而跳过，相关断言未覆盖。原始失败保留，不伪称全绿。[安全范围](docs/github/security.md)。
 
-既有记录：550/550单元、90/90原浏览器（同次47/47Phase3）、真实桌面OCR/PDF和用户确认的原生/安装/物理断网验收，不等于公开安全认证。[验证结论](docs/github/validation.md)。
+既有 RC.1 记录：550/550 单元、90/90 原浏览器（同次 47/47 Phase3）、真实桌面 OCR/PDF 和用户确认的原生/安装/物理断网验收。RC.2 补充六项关键原生文件检查、六项实际包内 EXE 冒烟和两项隔离安装资源往返；未重复完整人工验收，外部 renderer 请求阻断不等于物理断网。[验证结论](docs/github/validation.md)。
 
 架构：React、TypeScript、Vite、Tauri2、Rust、WebView2，共享核心/平台适配层。Node24.15+，锁文件安装；Web运行npm ci、npm run dev/build；桌面另需Rust MSVC1.99+、C++Build Tools/SDK与WebView2，运行npm run desktop:dev/build。PowerShell可用npm.cmd解决npm.ps1签名拦截，不修改策略。[开发指南](docs/github/development.md)。
 

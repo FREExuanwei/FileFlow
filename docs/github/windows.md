@@ -1,15 +1,23 @@
 # Windows RC installation
 
-The source repository currently provides **no public Windows installer**. A draft is prepared for 0.2.0-rc.1; its accepted installer remains local until privacy/distribution gates are addressed. [Status](release-status.md).
+[Download FileFlow 0.2.0-rc.2 x64](https://github.com/FREExuanwei/FileFlow/releases/download/v0.2.0-rc.2/FileFlow_0.2.0-rc.2_x64-setup.exe) · [Pre-release notes](https://github.com/FREExuanwei/FileFlow/releases/tag/v0.2.0-rc.2). FileFlow_0.2.0-rc.2_x64-setup.exe is 4,525,195 bytes. It is unsigned, not stable or independently audited.
 
-Requirements: Windows 11 x64, WebView2 Evergreen Runtime 154+ (the tested project floor, not a universal API minimum). FileFlow detects the runtime and will not download it silently. Use [Microsoft's official runtime source](https://developer.microsoft.com/en-us/microsoft-edge/webview2/) if needed.
+Requirements: Windows 11 x64, WebView2 Evergreen Runtime 154+ (the tested project floor). FileFlow checks the runtime and does not download it silently. Use [Microsoft's official runtime source](https://developer.microsoft.com/en-us/microsoft-edge/webview2/) if needed.
 
-For a future approved pre-release: download only its listed asset, check the release's SHA-256, save any in-memory results and close FileFlow normally. Run the per-user NSIS setup in a dedicated application directory. Do not select a directory containing unrelated personal files.
+## Verify before installing
 
-Unsigned means publisher identity is not authenticated. SmartScreen/unknown-publisher warnings may occur; respect Windows policy, do not disable protection. No certificate purchase or bypass is required by this project.
+Run PowerShell in the download directory:
 
-Upgrade in the same directory; installer preflight and maintenance checks request normal closure of running tasks. Check footer version and shortcut target when old copies exist. Use Windows Settings to uninstall the intended copy; keep the optional application-data deletion unchecked. User-selected exports must remain. Uninstall is not advertised as erasing all OS/profile/diagnostic traces.
+~~~powershell
+(Get-FileHash -LiteralPath .\FileFlow_0.2.0-rc.2_x64-setup.exe -Algorithm SHA256).Hash
+~~~
 
-The protected app profile is under %LOCALAPPDATA%/FileFlow.Desktop; it can contain non-sensitive preferences and local diagnostics. Never publish its crash dumps. Restart and select input again if source bytes were released after a conversion.
+Expected SHA-256: `36E03964C48B97CA9205239E4C472655DF62042DF7DCE0DABF9800F9AD8D6054`. Stop if it differs.
 
-For errors: retain results, note the displayed error code and use an invented minimal example. History-cleanup warnings are not permission grants or permission failures; actual red import/save errors should be reported separately.
+Save in-memory results and close FileFlow normally. Run the per-user NSIS setup in a dedicated application directory, not one containing unrelated personal files. Unknown-publisher/SmartScreen warnings may occur; respect Windows policy and do not disable protections. No certificate purchase or bypass is required.
+
+Upgrade in the intended installation directory. Preflight/maintenance checks require normal closure of running tasks. Check the footer version and shortcut target when older copies exist. Use Windows Settings to uninstall the intended copy; keep optional application-data deletion unchecked. User-selected exports must remain. Uninstall does not promise to erase all OS/profile/diagnostic traces.
+
+The installed licenses directory contains full third-party notices, DISTRIBUTION-NOTICE.txt, MPL-covered-sources.json and five exact MPL-*.crate source archives. They are gzip-compressed tar archives readable offline with standard archive tools. The index gives versions, original official source URLs and SHA-256. MPL-covered source retains its own rights.
+
+The protected profile is under %LOCALAPPDATA%/FileFlow.Desktop and can contain preferences and local diagnostics. Never publish crash dumps. Windows/WebView2 diagnostics and caches remain disclosed boundaries. Restart and select input again if source bytes were released after a conversion. Report errors with an invented minimal sample. [Security scope](security.md) · [Release status](release-status.md).

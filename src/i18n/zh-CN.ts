@@ -14,7 +14,7 @@ export const zhCN: Dictionary = {
   documentsDescription: '提取文字，让内容更好用。', imagesDescription: '保留画面，换一种图片格式。', dataDescription: '给数据一种更合适的结构。', markupDescription: '清晰的内容，方便继续编辑。',
   formatFootnote: 'PDF 文本提取需要可读取的文字层，复杂排版可能变化。页面操作请使用 PDF 工具；Windows 桌面版提供本地 OCR。', routes: '{count} 条路线',
   privacyEyebrow: '隐私保护，融入每一步', privacyTitle: '你的文件，始终留在这里', privacyDescription: '从导入到结果，全程在你的设备上完成。', yourFile: '你的文件', browser: '你的浏览器', result: '转换结果', howPrivacy: '了解隐私保护', noUpload: '无需上传', noAccount: '无需账号', noTracking: '无追踪', noKey: '无需 API 密钥',
-  footerLocal: '本地优先的文件转换工具', footerMessage: '为文件而做，为隐私而建。', version: 'FileFlow 0.2.0-rc.1',
+  footerLocal: '本地优先的文件转换工具', footerMessage: '为文件而做，为隐私而建。', version: 'FileFlow 0.2.0-rc.2',
   privacyDialogTitle: '你的设备，你的文件', closePrivacy: '关闭隐私说明', privacyProcessing: 'FileFlow 在浏览器中处理文件。文件内容不会发送到服务器、AI API 或在线转换服务。',
   privacyMemory: '文件和结果只在当前会话队列中保留。完成后自动释放源文件；移除或清除任务、关闭或刷新页面会释放保留的结果。本地仅保存外观主题和你手动选择的语言。',
   privacyAssets: '转换库和 PDF 所需资源均随应用本地提供。没有账号、统计分析、追踪或付费服务。', privacyLimits: '浏览器功能、操作系统行为和扩展程序不由 FileFlow 控制。安全限制有助于控制内存用量，但无法保证每台设备都能处理所有文件。', gotIt: '知道了',

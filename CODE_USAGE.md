@@ -6,4 +6,4 @@ GitHub's Terms provide platform-specific viewing/forking rights for public repos
 
 Third-party source/notices retain their own licenses. Nothing in this notice restricts recipients' rights to MPL-covered code. See [third-party.md](docs/github/third-party.md). This document does not change upstream licenses.
 
-Public Windows installer distribution remains a separate owner decision. No installer-use grant is silently inferred from a source-only draft.
+The owner has specifically authorized the 0.2.0-rc.2 Windows pre-release distribution. This publication does not assign a general first-party source license or alter upstream third-party rights.

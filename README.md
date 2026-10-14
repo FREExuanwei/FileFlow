@@ -6,13 +6,13 @@
 <p><a href="README.zh-CN.md">简体中文</a> · <a href="docs/github/windows.md">Windows guide</a> · <a href="docs/github/security.md">Privacy & security</a> · <a href="https://github.com/FREExuanwei/FileFlow/issues">Feedback</a></p>
 </div>
 
-**0.2.0-rc.1 · Release candidate.** Accepted for personal local use on one Windows 11 machine; not a stable release, production recommendation or independent security certification. **The Windows installer is not publicly available yet:** distribution checks found developer build paths in the binary, and native permission-test coverage remains incomplete. See [release status](docs/github/release-status.md).
+**0.2.0-rc.2 · Windows pre-release.** [Download the Windows x64 installer](https://github.com/FREExuanwei/FileFlow/releases/download/v0.2.0-rc.2/FileFlow_0.2.0-rc.2_x64-setup.exe) · [Release notes](https://github.com/FREExuanwei/FileFlow/releases/tag/v0.2.0-rc.2). The installer is **unsigned**. RC.1 was personally accepted on one Windows 11 machine; RC.2 reuses that scope with unchanged product logic and targeted package/file-operation checks. This is not stable, a production recommendation or independent security certification. See [release status](docs/github/release-status.md).
 
 FileFlow combines a file queue, configurable processing and readable previews. Processing stays local; the application has no file-upload feature, cloud conversion, AI API, account, API key or paid OCR service. The browser build remains independent; native file access and OCR are desktop features.
 
 ![Converter with invented CSV records](docs/github/assets/converter-light.png)
 
-*Actual RC interface. Every screenshot uses fictional data.*
+*Actual RC.1 interface, unchanged in RC.2. Every screenshot uses fictional data.*
 
 ## Workspaces
 
@@ -36,9 +36,23 @@ OCR reuses reliable PDF text layers and recognizes missing pages sequentially. S
 
 ## Windows
 
-Planned artifact: unsigned, per-user NSIS installer for **Windows 11 x64**, requiring **WebView2 Evergreen Runtime 154+**. The runtime is checked, not downloaded automatically.
+[**Download FileFlow 0.2.0-rc.2 for Windows x64**](https://github.com/FREExuanwei/FileFlow/releases/download/v0.2.0-rc.2/FileFlow_0.2.0-rc.2_x64-setup.exe) (4,525,195 bytes, approximately 4.32 MiB). [Pre-release notes and known limitations](https://github.com/FREExuanwei/FileFlow/releases/tag/v0.2.0-rc.2).
 
-No installer download is provided by this source-only publication. Check [release status](docs/github/release-status.md) and [the Windows guide](docs/github/windows.md). After a future pre-release is approved, verify its SHA-256, preserve in-memory results and close the old version normally. Unknown-publisher/SmartScreen warnings may occur; do not disable system protections.
+The unsigned, per-user NSIS installer requires **Windows 11 x64** and **WebView2 Evergreen Runtime 154+**. The runtime is checked, not downloaded automatically. Save in-memory results and close the old version normally before installation. Unknown-publisher/SmartScreen warnings may occur; do not disable system protections. [Windows guide](docs/github/windows.md).
+
+Verify the downloaded installer in PowerShell before running it:
+
+~~~powershell
+(Get-FileHash -LiteralPath .\FileFlow_0.2.0-rc.2_x64-setup.exe -Algorithm SHA256).Hash
+~~~
+
+Expected SHA-256:
+
+~~~text
+36E03964C48B97CA9205239E4C472655DF62042DF7DCE0DABF9800F9AD8D6054
+~~~
+
+Stop if the hash differs. Compare against the [release](https://github.com/FREExuanwei/FileFlow/releases/tag/v0.2.0-rc.2), and use only its named installer asset.
 
 ## Limits
 
@@ -99,7 +113,7 @@ npm run typecheck
 
 ## Verification and history
 
-Local records report **550/550 units**, **90/90 original browser cases** including one continuous **47/47 Phase 3 run**, and actual Windows OCR/PDF execution. Installed native dialogs, upgrade/uninstall/reinstall and physical-offline checks were owner-confirmed, not independently certified. Native permission fixtures have failures/skips; they are not counted as security passes. [Validation summary](docs/github/validation.md).
+Local records report **550/550 units**, **90/90 original browser cases** including one continuous **47/47 Phase 3 run**, and actual Windows OCR/PDF execution. Installed native dialogs, upgrade/uninstall/reinstall and physical-offline checks were owner-confirmed, not independently certified. RC.2 adds six focused native checks, six exact-package smoke checks and two scoped installed-resource checks. Real Junction rejection passes; privileged symbolic-link assertions remain unverified (Win32 1314), and historical fixture failures are retained. [Validation summary](docs/github/validation.md).
 
 GitHub starts from a privacy-reviewed RC source snapshot. Previous local commits/tags and raw records stay local. Product source matches the accepted RC manifest; the public initial commit has a different identity. [Version history](docs/github/history.md) · [Changelog](CHANGELOG.md).
 

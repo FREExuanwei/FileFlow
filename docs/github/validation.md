@@ -23,3 +23,13 @@ These are conclusions from locally retained acceptance evidence; original logs, 
 Desktop automation injects fictional inputs into the actual UI and exercises actual workers/WinRT; it does not impersonate native selection/save or physical disconnect. Limits, diagnostics, unsigned identity and uncovered environments remain risks.
 
 The screenshots are fresh captures of the accepted RC, in an agent-owned test process, using invented CSV/PDF/OCR contents. They do not contain OS dialogs, private desktop content or actual personal records.
+
+## 0.2.0-rc.2 distribution validation — 2026-10-14
+
+The table above records earlier acceptance/publication attempts. The later real Junction rerun passed in a permitted execution context; previous failures remain in local records. Privileged symlink assertions remain unverified (explicit Win32 1314 skip).
+
+RC.2 changes seven version files and seven notice/source resources; the 209 accepted product fingerprints match after normalizing the version, and dependency/core/NSIS logic is unchanged. Six focused existing native file-operation assertions pass; six checks on the exact installer-extracted EXE pass; two scoped install/resource/uninstall checks pass. These are separate targeted records, not a new full Rust/Vitest/browser/manual suite.
+
+The new exact-package smoke covers local-resource reload with renderer-external requests blocked and browser cache disabled, CSV, real Windows OCR, PDF extract, proper ungranted native read/write rejection, privacy controls and local request boundary. It preserves preferences and normally closes its owned process. No new physical-network, native-dialog, whole-wizard, multi-machine or hours-long RC.2 acceptance is claimed. Prior RC.1 owner-reported manual/physical-offline results are reused for unchanged behavior.
+
+NSIS archive integrity/extraction and all 18 packaged notice/source hashes pass. Five MPL archives match Cargo.lock. Known developer path checks and PE metadata inspection are clean within stated scope. One independent bounded review found no Critical/Important technical defect. Preparation-tool probe argument/filename failures are retained locally, corrected only in the probes, and are not hidden as product passes. [Release status](release-status.md) · [Build provenance](build-provenance.json).

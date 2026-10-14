@@ -1,27 +1,28 @@
 {
-  "version": "0.2.0-rc.1",
-  "scope": "Current product source fingerprints, not raw test/chat/history records.",
-  "acceptedInstallerSha256": "EFBB328A2696284083164C5089040A6D72EEBC24BADEB889A2B9F90B2037E401",
+  "version": "0.2.0-rc.2",
+  "scope": "Exact reviewed RC.2 product/build-resource fingerprints; no raw test/chat/private-history records.",
+  "installerSha256": "36E03964C48B97CA9205239E4C472655DF62042DF7DCE0DABF9800F9AD8D6054",
+  "sourceBasePublicCommit": "c55a0e3120896cf815a64350edd1618764f241bb",
   "files": [
     {
       "path": "package-lock.json",
       "bytes": 136705,
-      "sha256": "CDDD0E8EE824D5899658C56206B1B628F92BE33D8FE6CDD97B60DADD58ADF5AE"
+      "sha256": "DFB33AD20EAB5A6B66EDF7BA16C915FA61E5099A7F375648062F26139EF384CE"
     },
     {
       "path": "package.json",
       "bytes": 1871,
-      "sha256": "B02E1F1622F0631D284A6B2C4FB3B0DD779AAEFB9B3CB88428E5D8DF7B267E8F"
+      "sha256": "03C9CB2A3AB44B3AC8CA6D6BB180B7D3FEFC931BD9A5F154416D547B77EAE9F8"
     },
     {
       "path": "src-tauri/Cargo.lock",
       "bytes": 104129,
-      "sha256": "B4AE88D9030966FF0BF1814DC3C0DAE048EDA17A5697489E1D7E13EB100475B4"
+      "sha256": "29B8EC21827026FA6DA75516F53122259BA86E5F91558A97E77D8139CF6D4BC4"
     },
     {
       "path": "src-tauri/Cargo.toml",
       "bytes": 871,
-      "sha256": "89791DF8D9FC227447648D95BC14CF8C3F0D50885CEB96F70DF92B66313442FE"
+      "sha256": "762DB335CE9C8FD0BB97D0A193CC4F3D956957B1D4E5B4C2EDB972FA6D333D97"
     },
     {
       "path": "src-tauri/build.rs",
@@ -34,9 +35,44 @@
       "sha256": "6BA983187071515702639815FA98080ECDAC86AE164426369E5E4F29FA724A1E"
     },
     {
+      "path": "src-tauri/licenses/DISTRIBUTION-NOTICE.txt",
+      "bytes": 2497,
+      "sha256": "15602BD154DE00B7CA71213BD921D35C86DD4EB21DE2B075ED2613A8A2BE6B4F"
+    },
+    {
       "path": "src-tauri/licenses/FRONTEND-NOTICES.txt",
       "bytes": 154192,
       "sha256": "49AA0EA9F93A542923CB31617DCF9DE3C20072D9ECD0B7662546088B017960A3"
+    },
+    {
+      "path": "src-tauri/licenses/MPL-covered-sources.json",
+      "bytes": 2100,
+      "sha256": "C59F5263265FACC61685E7EB26BB7E0C994372D740C67D369AC826CEA8489A27"
+    },
+    {
+      "path": "src-tauri/licenses/MPL-cssparser-0.37.0.crate",
+      "bytes": 56860,
+      "sha256": "8C9CDAAE01D5ED7882B04D795E7F752F46FF52D2FA3B50A20D28C464510BBA98"
+    },
+    {
+      "path": "src-tauri/licenses/MPL-cssparser-macros-0.7.1.crate",
+      "bytes": 8197,
+      "sha256": "D045DE693CB712D0B22C6A64BE5B953F67B3CE00AB5AD3DD5D8B441886AB8E1A"
+    },
+    {
+      "path": "src-tauri/licenses/MPL-dtoa-short-0.3.5.crate",
+      "bytes": 8287,
+      "sha256": "CD1511A7B6A56299BD043A9C167A6D2BFB37BF84A6DFCEABA651168ADFB43C87"
+    },
+    {
+      "path": "src-tauri/licenses/MPL-option-ext-0.2.0.crate",
+      "bytes": 7345,
+      "sha256": "04744F49EAE99AB78E0D5C0B603AB218F515EA8CFE5A456D7629AD883A3B6E7D"
+    },
+    {
+      "path": "src-tauri/licenses/MPL-selectors-0.38.0.crate",
+      "bytes": 69601,
+      "sha256": "8ADFA1C298912827B8A28B223B3B874357397AE706E6190ACD9BF28CEE99114D"
     },
     {
       "path": "src-tauri/licenses/PDF-ASSET-LICENSES.txt",
@@ -196,7 +232,7 @@
     {
       "path": "src-tauri/tauri.conf.json",
       "bytes": 1160,
-      "sha256": "F10E4D636A107153F6162C8041C74E7B66193BA6C1F911D4B9854DF765439C85"
+      "sha256": "E0F22950A0B9BAB7ECCA1F8E2777B676E43C3AB7EC2998BA32DA5EF446579941"
     },
     {
       "path": "src-tauri/windows/installer-hooks.nsh",
@@ -891,7 +927,7 @@
     {
       "path": "src/i18n/en.ts",
       "bytes": 4780,
-      "sha256": "636421416EBB91038376FA88B8506E59A6E068208521B7C3A3634DC182415A68"
+      "sha256": "DD066E43A5AC85119C243458D8973FBC1FE13E0EDD13FF891F2F50EE27662B7C"
     },
     {
       "path": "src/i18n/engine-messages.ts",
@@ -931,7 +967,7 @@
     {
       "path": "src/i18n/zh-CN.ts",
       "bytes": 4938,
-      "sha256": "9E65D03830F7D2CA0B69CA734C03D5549FF820ECFBAD4AEA7F59EBE2F3C5A7EF"
+      "sha256": "29E6CE830385443C5E2507A5A7904D7D5B683D947284E52F28C0556EA572B822"
     },
     {
       "path": "src/main.tsx",

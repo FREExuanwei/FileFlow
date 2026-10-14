@@ -1,23 +1,21 @@
 # Privacy, file access and distribution status
 
-FileFlow itself has no cloud conversion, telemetry, remote error reporting, model-download or file-upload feature. User files and previews are local. Renderer observations in local tests were limited to app-owned/IPC origins. This does **not** establish zero Windows/WebView2 diagnostic networking.
+FileFlow has no cloud conversion, telemetry, remote error reporting, model-download or file-upload feature. User files and previews are local. Renderer observations were limited to app-owned/IPC origins; this does not establish zero Windows/WebView2 diagnostic networking.
 
-Desktop files require explicit native selection or supported drop admission, validated Rust commands and short-lived tokens. Parent directories/handles, reparse attributes, extension/size bounds and transactional saves protect against arbitrary paths and unsafe replacement. No broad filesystem/shell plugin is installed. Native and Web implementations are separated.
+Desktop files require explicit native selection or supported drop admission, validated Rust commands and short-lived tokens. Opened parent-directory handles reject reparse attributes and deny write/delete sharing; input bounds and transactional saves protect against unsafe paths and replacement. No broad filesystem/shell plugin is installed. HTML is sanitized and previewed in a restricted frame; existing parser/worker budgets and frozen AI Ready algorithms are unchanged. Originals are not silently edited.
 
-HTML is sanitized and previewed in a restricted frame; PDF/data parsers and workers retain existing budgets. Documents are untrusted. Original files are not silently edited. Frozen AI Ready algorithms have not been changed for publication.
+Only theme/language preferences are intentionally saved. Dialog history, OS caches and protected WebView2 local crash dumps may remain; dumps can include memory. Official crash-upload control is enabled, while OS/runtime diagnostics remain outside FileFlow's complete control. Cleanup reduces residual risk, not earlier disk writes. The earlier strict-zero-dump gate remains historically BLOCKED; the later owner-approved protected-local-dump model is distinct.
 
-Only theme/language preferences are intentionally saved. Dialog history, OS caches and protected WebView2 local crash dumps may remain. Dumps can include memory; official crash upload control is enabled, while OS/runtime diagnostics are a disclosed trust boundary. Cleanup reduces residual risk, not previous disk writes. The earlier strict-zero-dump gate remains historically BLOCKED; the later owner-approved protected-local-dump model is distinct.
+## File access evidence and gaps
 
-## Permission coverage
+The original full native run reported 35 passes and one symbolic-link fixture creation failure (Win32 5). The initial publication recheck soft-skipped Win32 1314; neither result verifies the symbolic-link rejection assertions.
 
-Phase 8's full Rust run reported 35 passes and one failure while creating a symbolic-link fixture (Win32 5), before the reparse assertions. A fresh publication check, with current execution permissions, returned Win32 1314 and the existing test's explicit soft skip. Its runner “ok” is **not** a verified symbolic-link rejection.
+A later 2026-10-14 run of the existing Junction test in a permitted context passed actual import/save reparse rejection and confirmed the fictional target stayed unchanged. Six focused native checks also cover real read/save, existing/raced-target no-overwrite and pinned parent/temp protection. Earlier fixture failures are not erased or combined into a fictional full-suite PASS.
 
-A prior unchanged-source junction test did exercise import/save reparse rejection and confirmed its fictional target stayed unchanged. The publication-time junction rerun failed creating its fixture; its assertions did not execute. Preserve both conclusions; prior PASS does not erase new fixture FAIL, and a junction is not a complete symbolic-link replacement. No privilege, Developer Mode or security-policy change was made. No product-path authorization failure was demonstrated, but the coverage gap remains.
+The privileged symbolic-link fixture still cannot be created (Win32 1314), and its separate assertions remain unverified. Real Junction rejection, shared reparse-point checks and opened-handle pinning support a limited RC with this disclosed coverage residual; they are not a complete symlink replacement. No Developer Mode, privilege or security-policy change was made. No actual path-authorization bypass was demonstrated by these checks.
 
 ## Binary privacy
 
-The accepted main executable contains 142 developer-workstation path strings identifying Cargo source files. These are build-source paths, not evidence of uploaded user documents, but they are inappropriate for an unreviewed public binary. The installer stays local. Do not rebuild/relabel a different installer as the accepted RC.1 or reuse its acceptance hash.
+RC.1's accepted main executable contained 142 Cargo developer-source path occurrences; its installer stays local. RC.2 is a new version with supported compiler path remapping and renewed package inspection. Known workstation prefixes were absent from its installer, 25 extracted files and separately checked frontend output; no absolute PE CodeView PDB path was found. These scoped scans and unchanged reviewed inputs do not prove absence of all encoded secrets or native vulnerabilities.
 
-A later candidate needs supported build-path remapping, binary/path inspection and appropriate renewed validation. Neither a zero secrets scan nor a successful npm audit proves native/binary safety.
-
-No independent security audit, production suitability, multi-machine completeness or hours-long endurance claim is made. Report only invented samples and redacted facts. [Release status](release-status.md).
+The public RC.2 remains unsigned, with limited machine, username and endurance coverage. Its targeted exact-package smoke reused prior RC.1 manual/physical-offline evidence; renderer request blocking is not a physical-disconnect test. No independent security audit or production suitability claim is made. Use only fictional examples in reports. [Release status](release-status.md).
